@@ -3,426 +3,86 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Astro-premium — персональный астрологический прогноз, натальная карта, совместимость знаков" />
-    <meta name="theme-color" content="#0B0C15" />
-    
     <title>Astro-premium | Персональный астрологический прогноз</title>
-    
     <link rel="icon" type="image/png" href="images/icon-192.png" />
-    <link rel="apple-touch-icon" href="images/icon-192.png" />
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/style.css" />
-    
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(XXXXXXXX, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
-        });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </head>
 <body>
     <div class="stars-bg" id="starsBg"></div>
     
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="images/icon-192.png" alt="Astro-premium" class="logo-icon" />
-                    <span class="logo-text">Astro-premium</span>
-                </div>
-                <nav class="nav">
-                    <a href="#features">Возможности</a>
-                    <a href="#how-it-works">Как работает</a>
-                    <a href="#reviews">Отзывы</a>
-                    <a href="#pricing">Цены</a>
-                    <a href="#faq">FAQ</a>
-                </nav>
-                <a href="https://t.me/your_astro_bot" class="btn btn-primary header-btn">
-                    Открыть в Telegram
-                </a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/icon-192.png" alt="Astro-premium" class="logo-icon" />
+                <span class="logo-text">Astro-premium</span>
             </div>
+            <nav class="nav">
+                <a href="#features">Возможности</a>
+                <a href="#how-it-works">Как работает</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#pricing">Цены</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <a href="https://t.me/your_astro_bot" class="btn btn-primary header-btn">
+                Открыть в Telegram
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge animate-pulse">
-                    ✦ Персональная астрология ✦
-                </div>
-                <h1 class="hero-title">
-                    Узнай свою <span class="text-gold">судьбу</span> по звёздам
-                </h1>
-                <p class="hero-subtitle">
-                    Персональный астрологический прогноз, натальная карта и совместимость знаков в вашем Telegram
-                </p>
-                <div class="hero-buttons">
-                    <a href="https://t.me/your_astro_bot" class="btn btn-primary btn-lg btn-glow">
-                        ✦ Открыть портал судьбы ✦
-                    </a>
-                    <a href="#features" class="btn btn-secondary btn-lg">
-                        ✧ Познать тайны звёзд ✧
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number" data-count="2347">0</span>
-                        <span class="stat-label">довольных пользователей</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-count="4.9">0</span>
-                        <span class="stat-label">рейтинг</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-count="15000">0</span>
-                        <span class="stat-label">прогнозов составлено</span>
-                    </div>
-                </div>
-                <div class="hero-trust">
-                    <span class="trust-badge">⚡️ Бесплатно</span>
-                    <span class="trust-badge">⚡️ 2 минуты</span>
-                    <span class="trust-badge">⚡️ Без регистрации</span>
-                </div>
+        <div class="hero-badge">✦ Персональная астрология ✦</div>
+        <h1 class="hero-title">
+            Узнай свою <span style="color: #F4C430;">судьбу</span> по звёздам
+        </h1>
+        <p class="hero-subtitle">
+            Персональный астрологический прогноз, натальная карта и совместимость знаков в вашем Telegram
+        </p>
+        <div class="hero-buttons">
+            <a href="https://t.me/your_astro_bot" class="btn btn-primary btn-lg btn-glow">
+                ✦ Открыть портал судьбы ✦
+            </a>
+            <a href="#features" class="btn btn-secondary btn-lg">
+                ✧ Познать тайны звёзд ✧
+            </a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number" data-count="2347">0</span>
+                <span class="stat-label">довольных пользователей</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" data-count="4.9">0</span>
+                <span class="stat-label">рейтинг</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" data-count="15000">0</span>
+                <span class="stat-label">прогнозов составлено</span>
             </div>
         </div>
-    </section>
-
-    <section class="problem">
-        <div class="container">
-            <h2 class="section-title">Узнаёте себя?</h2>
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <span class="problem-icon">💔</span>
-                    <h3>Не везёт в любви</h3>
-                    <p>Не понимаете, почему отношения не складываются</p>
-                </div>
-                <div class="problem-card">
-                    <span class="problem-icon">💼</span>
-                    <h3>Запутались в карьере</h3>
-                    <p>Не знаете, куда двигаться дальше</p>
-                </div>
-                <div class="problem-card">
-                    <span class="problem-icon">😔</span>
-                    <h3>Чувствуете, что идёте не туда</h3>
-                    <p>Ощущение, что жизнь проходит мимо</p>
-                </div>
-                <div class="problem-card">
-                    <span class="problem-icon">❓</span>
-                    <h3>Хотите знать будущее</h3>
-                    <p>Интересует, что готовит судьба</p>
-                </div>
-            </div>
-            <div class="problem-solution">
-                <p class="solution-text">✨ Звёзды знают ответы! Astro-premium поможет вам понять себя и своё предназначение</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="features" id="features">
-        <div class="container">
-            <h2 class="section-title">Возможности</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🌙</div>
-                    <h3>Месячный гороскоп</h3>
-                    <p>Персональный прогноз на месяц для вашего знака зодиака</p>
-                </div>
-                <div class="feature-card vip">
-                    <div class="feature-icon">🔮</div>
-                    <h3>Натальная карта</h3>
-                    <p>Полный разбор вашей личности по дате и времени рождения</p>
-                    <span class="vip-badge">VIP</span>
-                </div>
-                <div class="feature-card vip">
-                    <div class="feature-icon">💕</div>
-                    <h3>Совместимость</h3>
-                    <p>Проверьте совместимость с партнёром, другом или коллегой</p>
-                    <span class="vip-badge">VIP</span>
-                </div>
-                <div class="feature-card vip">
-                    <div class="feature-icon">🌕</div>
-                    <h3>Лунный календарь</h3>
-                    <p>Благоприятные дни для важных решений и действий</p>
-                    <span class="vip-badge">VIP</span>
-                </div>
-                <div class="feature-card vip">
-                    <div class="feature-icon">✨</div>
-                    <h3>Совет дня</h3>
-                    <p>Ежедневные персональные рекомендации каждое утро</p>
-                    <span class="vip-badge">VIP</span>
-                </div>
-                <div class="feature-card vip">
-                    <div class="feature-icon">📅</div>
-                    <h3>Прогнозы на год</h3>
-                    <p>Долгосрочные прогнозы на 3, 6 и 12 месяцев</p>
-                    <span class="vip-badge">VIP</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <h2 class="section-title">Как это работает</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Нажмите кнопку</h3>
-                        <p>Перейдите в Telegram бота Astro-premium</p>
-                    </div>
-                </div>
-                <div class="step-connector"></div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Пройдите онбординг</h3>
-                        <p>Укажите знак зодиака, дату рождения и цель (2 минуты)</p>
-                    </div>
-                </div>
-                <div class="step-connector"></div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Получите прогноз</h3>
-                        <p>Ваш персональный гороскоп готов! Можно оформлять VIP</p>
-                    </div>
-                </div>
-            </div>
-            <div class="steps-cta">
-                <a href="https://t.me/your_astro_bot" class="btn btn-primary btn-lg">
-                    🚀 Начать прямо сейчас
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="reviews" id="reviews">
-        <div class="container">
-            <h2 class="section-title">Отзывы</h2>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">«Точность поражает! Узнала о повышении за 2 недели до приказа. Натальная карта открыла мне глаза на мои сильные стороны»</p>
-                    <div class="review-author">
-                        <div class="author-avatar">А</div>
-                        <div class="author-info">
-                            <span class="author-name">Анна</span>
-                            <span class="author-age">28 лет</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">«Пользуюсь уже 3 месяца. Советы дня реально помогают принимать решения. Совместимость с женой — 95%, так и есть!»</p>
-                    <div class="review-author">
-                        <div class="author-avatar">М</div>
-                        <div class="author-info">
-                            <span class="author-name">Михаил</span>
-                            <span class="author-age">34 года</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">«Лучшее астрологическое приложение в Telegram! Удобно, красиво, точно. VIP стоит своих денег на 100%»</p>
-                    <div class="review-author">
-                        <div class="author-avatar">Е</div>
-                        <div class="author-info">
-                            <span class="author-name">Елена</span>
-                            <span class="author-age">31 год</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="reviews-trust">
-                <span class="trust-stat">📊 2,347 отзывов</span>
-                <span class="trust-stat">⭐ 4.9 рейтинг</span>
-                <span class="trust-stat">👥 15,000+ пользователей</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Тарифы</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3 class="pricing-title">Бесплатно</h3>
-                    <div class="pricing-price">0₽</div>
-                    <div class="pricing-period">навсегда</div>
-                    <ul class="pricing-features">
-                        <li class="feature-included">✓ Месячный гороскоп</li>
-                        <li class="feature-included">✓ Знак зодиака</li>
-                        <li class="feature-included">✓ Базовые прогнозы</li>
-                        <li class="feature-excluded">✗ Натальная карта</li>
-                        <li class="feature-excluded">✗ Совместимость</li>
-                        <li class="feature-excluded">✗ Лунный календарь</li>
-                        <li class="feature-excluded">✗ Совет дня</li>
-                    </ul>
-                    <a href="https://t.me/your_astro_bot" class="btn btn-secondary btn-block">
-                        Попробовать бесплатно
-                    </a>
-                </div>
-                <div class="pricing-card popular">
-                    <div class="popular-badge">🔥 Популярный</div>
-                    <h3 class="pricing-title">VIP</h3>
-                    <div class="pricing-price">290₽</div>
-                    <div class="pricing-period">в месяц</div>
-                    <ul class="pricing-features">
-                        <li class="feature-included">✓ Всё из бесплатного</li>
-                        <li class="feature-included">✓ Натальная карта</li>
-                        <li class="feature-included">✓ Совместимость</li>
-                        <li class="feature-included">✓ Лунный календарь</li>
-                        <li class="feature-included">✓ Совет дня</li>
-                        <li class="feature-included">✓ Прогнозы на 3/6/12 месяцев</li>
-                        <li class="feature-included">✓ Без рекламы</li>
-                    </ul>
-                    <a href="https://t.me/your_astro_bot" class="btn btn-primary btn-block btn-glow">
-                        Оформить VIP
-                    </a>
-                    <div class="pricing-guarantee">
-                        🔒 3 дня бесплатно при первой оплате
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq" id="faq">
-        <div class="container">
-            <h2 class="section-title">Частые вопросы</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Это точно работает?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Мы используем швейцарские эфемериды (Swiss Ephemeris) — это стандарт индустрии с точностью NASA. Все расчёты математически точны, а интерпретации генерируются профессиональными астрологами с помощью AI.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Безопасно ли это?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Абсолютно! Мы не храним личные данные дольше необходимого. Полная конфиденциальность гарантирована. Данные используются только для расчёта вашего гороскопа.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Можно отменить подписку?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Да, в любой момент. Подписка не продлевается автоматически — вы сами решаете, когда продлить. Никаких скрытых платежей.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Что если не понравится?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Мы предлагаем 3 дня бесплатного VIP при первой оплате. Если не понравится — просто не продлевайте. Без вопросов и возвратов.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Нужна ли регистрация?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Нет! Достаточно иметь Telegram аккаунт. Все данные сохраняются автоматически в вашем профиле Telegram.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Не откладывайте на завтра</h2>
-                <p class="cta-subtitle">Узнайте, что звёзды приготовили именно для вас</p>
-                
-                <div class="cta-timer" id="ctaTimer">
-                    <div class="timer-item">
-                        <span class="timer-number" id="hours">23</span>
-                        <span class="timer-label">часов</span>
-                    </div>
-                    <div class="timer-item">
-                        <span class="timer-number" id="minutes">59</span>
-                        <span class="timer-label">минут</span>
-                    </div>
-                    <div class="timer-item">
-                        <span class="timer-number" id="seconds">59</span>
-                        <span class="timer-label">секунд</span>
-                    </div>
-                </div>
-                <div class="timer-text">⏰ Специальное предложение: первые 100 человек получают 3 дня VIP бесплатно!</div>
-                
-                <div class="cta-buttons">
-                    <a href="https://t.me/your_astro_bot" class="btn btn-primary btn-lg btn-glow">
-                        🔮 Открыть Astro-premium в Telegram
-                    </a>
-                </div>
-                <div class="cta-trust">
-                    <span>⚡️ Бесплатно</span>
-                    <span>⚡️ 2 минуты</span>
-                    <span>⚡️ Без регистрации</span>
-                </div>
-            </div>
+        <div class="hero-trust">
+            <span class="trust-badge">⚡️ Бесплатно</span>
+            <span class="trust-badge">⚡️ 2 минуты</span>
+            <span class="trust-badge">⚡️ Без регистрации</span>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="images/icon-192.png" alt="Astro-premium" class="footer-logo" />
-                    <div>
-                        <h4>Astro-premium</h4>
-                        <p>Персональный астрологический прогноз</p>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <a href="#features">Возможности</a>
-                    <a href="#pricing">Цены</a>
-                    <a href="#reviews">Отзывы</a>
-                    <a href="#faq">FAQ</a>
-                </div>
-                <div class="footer-social">
-                    <a href="https://t.me/your_astro_bot" class="social-link">Telegram</a>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="images/icon-192.png" alt="Astro-premium" class="footer-logo" />
+                <div>
+                    <h4>Astro-premium</h4>
+                    <p>Персональный астрологический прогноз</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Astro-premium. Все права защищены.</p>
-                <div class="footer-legal">
-                    <a href="#">Политика конфиденциальности</a>
-                    <a href="#">Публичная оферта</a>
-                </div>
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Astro-premium. Все права защищены.</p>
         </div>
     </footer>
 
@@ -433,7 +93,7 @@
             <a href="#reviews">Отзывы</a>
             <a href="#pricing">Цены</a>
             <a href="#faq">FAQ</a>
-            <a href="https://t.me/your_astro_bot" class="btn btn-primary btn-block">Открыть в Telegram</a>
+            <a href="https://t.me/your_astro_bot" class="btn btn-primary">Открыть в Telegram</a>
         </nav>
     </div>
 
