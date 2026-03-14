@@ -4,37 +4,21 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // === Stars Background ===
     createStars();
-    
-    // === Mobile Menu ===
     initMobileMenu();
-    
-    // === Smooth Scroll ===
     initSmoothScroll();
-    
-    // === FAQ Accordion ===
     initFAQ();
-    
-    // === Counter Animation ===
     initCounters();
-    
-    // === Timer ===
     initTimer();
-    
-    // === Header Scroll Effect ===
     initHeaderScroll();
-    
-    // === Form Handling ===
     initCTAClicks();
 });
 
-// === Create Stars Background ===
 function createStars() {
     const starsBg = document.getElementById('starsBg');
     if (!starsBg) return;
     
-    const starCount = 100;
+    const starCount = 150;
     
     for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
@@ -52,7 +36,6 @@ function createStars() {
     }
 }
 
-// === Mobile Menu ===
 function initMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -64,7 +47,6 @@ function initMobileMenu() {
         document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
     });
     
-    // Close menu on link click
     mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', function() {
             mobileMenu.classList.remove('active');
@@ -73,7 +55,6 @@ function initMobileMenu() {
     });
 }
 
-// === Smooth Scroll ===
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -92,7 +73,6 @@ function initSmoothScroll() {
     });
 }
 
-// === FAQ Accordion ===
 function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
     
@@ -103,10 +83,8 @@ function initFAQ() {
         question.addEventListener('click', function() {
             const isActive = item.classList.contains('active');
             
-            // Close all items
             faqItems.forEach(i => i.classList.remove('active'));
             
-            // Open clicked item if it wasn't active
             if (!isActive) {
                 item.classList.add('active');
             }
@@ -114,7 +92,6 @@ function initFAQ() {
     });
 }
 
-// === Counter Animation ===
 function initCounters() {
     const counters = document.querySelectorAll('.stat-number[data-count]');
     
@@ -128,7 +105,7 @@ function initCounters() {
             if (entry.isIntersecting) {
                 const counter = entry.target;
                 const target = parseFloat(counter.getAttribute('data-count'));
-                const duration = 2000; // 2 seconds
+                const duration = 2000;
                 const step = target / (duration / 16);
                 let current = 0;
                 
@@ -151,12 +128,10 @@ function initCounters() {
     counters.forEach(counter => observer.observe(counter));
 }
 
-// === Timer ===
 function initTimer() {
     const timerElement = document.getElementById('ctaTimer');
     if (!timerElement) return;
     
-    // Set timer to 24 hours from now
     let endTime = localStorage.getItem('astroTimer');
     
     if (!endTime) {
@@ -173,7 +148,6 @@ function initTimer() {
         const distance = endTime - now;
         
         if (distance < 0) {
-            // Reset timer
             endTime = Date.now() + (24 * 60 * 60 * 1000);
             localStorage.setItem('astroTimer', endTime);
         }
@@ -191,12 +165,9 @@ function initTimer() {
     setInterval(updateTimer, 1000);
 }
 
-// === Header Scroll Effect ===
 function initHeaderScroll() {
     const header = document.querySelector('.header');
     if (!header) return;
-    
-    let lastScroll = 0;
     
     window.addEventListener('scroll', function() {
         const currentScroll = window.pageYOffset;
@@ -208,23 +179,18 @@ function initHeaderScroll() {
             header.style.background = 'rgba(11, 12, 21, 0.95)';
             header.style.boxShadow = 'none';
         }
-        
-        lastScroll = currentScroll;
     });
 }
 
-// === CTA Click Tracking ===
 function initCTAClicks() {
     const ctaButtons = document.querySelectorAll('a[href*="t.me/"]');
     
     ctaButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Yandex.Metrika goal (if configured)
             if (typeof ym !== 'undefined') {
                 ym(XXXXXXXX, 'reachGoal', 'telegram_click');
             }
             
-            // Google Analytics (if configured)
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'click', {
                     'event_category': 'CTA',
@@ -235,7 +201,6 @@ function initCTAClicks() {
     });
 }
 
-// === Reset Timer (for testing) ===
 window.resetAstroTimer = function() {
     localStorage.removeItem('astroTimer');
     location.reload();
