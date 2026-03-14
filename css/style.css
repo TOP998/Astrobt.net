@@ -31,28 +31,15 @@ html {
 
 body {
     font-family: var(--font-body);
-    background: linear-gradient(180deg, rgba(11, 12, 21, 0.8) 0%, rgba(11, 12, 21, 0.9) 100%);
+    background: 
+        linear-gradient(180deg, rgba(11, 12, 21, 0.7) 0%, rgba(11, 12, 21, 0.85) 100%),
+        url('../images/space-bg.jpg') center center / cover no-repeat fixed;
     background-attachment: fixed;
     color: var(--color-white);
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
-}
-
-/* ФОНОВАЯ КАРТИНКА С МАГОМ */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../images/Space-bg.jpg');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    opacity: 0.6;
-    z-index: -1;
+    position: relative;
 }
 
 /* Магическое свечение */
@@ -66,7 +53,12 @@ body::after {
     background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%);
     animation: glowPulse 10s ease-in-out infinite;
     pointer-events: none;
-    z-index: -1;
+    z-index: 0;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
 }
 
 @keyframes glowPulse {
