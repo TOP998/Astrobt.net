@@ -30,8 +30,8 @@ html {
 
 body {
     font-family: var(--font-body);
-    background: linear-gradient(180deg, rgba(11, 12, 21, 0.75) 0%, rgba(11, 12, 21, 0.9) 100%);
-    background-attachment: fixed;
+    /* ФОН ЗАПОЛНЯЕТ ЭКРАН */
+    background: linear-gradient(180deg, rgba(11, 12, 21, 0.7) 0%, rgba(11, 12, 21, 0.85) 100%);
     color: var(--color-white);
     line-height: 1.6;
     overflow-x: hidden;
@@ -39,35 +39,33 @@ body {
     position: relative;
 }
 
-/* АНИМИРОВАННЫЙ ФОН - ИСПРАВЛЕНО */
+/* ФОНОВАЯ КАРТИНКА - ИСПРАВЛЕНО */
 body::before {
     content: '';
     position: fixed;
-    top: -10%;
-    left: -10%;
-    width: 120%;
-    height: 120%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('../images/space-bg.jpg');
-    background-size: contain;
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    opacity: 0.5;
+    background-attachment: fixed;
+    opacity: 0.65;
     z-index: -1;
-    animation: bgFloat 30s ease-in-out infinite;
+    /* МЕРЦАНИЕ ФОНА (не движение!) */
+    animation: bgFlicker 8s ease-in-out infinite;
 }
 
-@keyframes bgFloat {
+@keyframes bgFlicker {
     0%, 100% {
-        transform: translate(0, 0) scale(1) rotate(0deg);
-    }
-    25% {
-        transform: translate(2%, 2%) scale(1.05) rotate(1deg);
+        opacity: 0.65;
+        filter: brightness(1);
     }
     50% {
-        transform: translate(0, 4%) scale(1.02) rotate(0deg);
-    }
-    75% {
-        transform: translate(-2%, 2%) scale(1.05) rotate(-1deg);
+        opacity: 0.75;
+        filter: brightness(1.1);
     }
 }
 
@@ -79,7 +77,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%);
     animation: glowPulse 10s ease-in-out infinite;
     pointer-events: none;
     z-index: -1;
@@ -91,12 +89,11 @@ body::after {
 }
 
 /* ============================================
-   КНОПКИ-ПАПИРУС С НЕОНОВЫМ СВЕЧЕНИЕМ
+   КНОПКИ С НЕОНОВЫМ СВЕЧЕНИЕМ
    ============================================ */
 
 .btn {
     display: inline-block;
-    /* НА 10% МЕНЬШЕ */
     padding: 20px 45px;
     font-weight: 700;
     text-decoration: none;
@@ -116,7 +113,6 @@ body::after {
     color: #2C1810;
     border: 2px solid #8B7355;
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
-    /* БОЛЕЕ РВАНЫЕ КРАЯ */
     clip-path: polygon(
         0% 3%, 1% 0%, 3% 4%, 5% 1%, 7% 5%, 9% 2%, 11% 6%, 13% 1%, 
         15% 5%, 17% 0%, 19% 4%, 21% 2%, 23% 6%, 25% 1%, 27% 5%, 
@@ -157,21 +153,21 @@ body::after {
 .btn-primary:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 
-        0 0 10px var(--color-neon-gold),
-        0 0 20px var(--color-neon-gold),
-        0 0 30px var(--color-neon-gold),
+        0 0 10px #FFD700,
+        0 0 20px #FFD700,
+        0 0 30px #FFD700,
         0 0 40px rgba(255, 215, 0, 0.5),
         inset 0 0 20px rgba(255, 215, 0, 0.3);
-    border-color: var(--color-neon-gold);
+    border-color: #FFD700;
 }
 
-/* НЕОНОВОЕ СВЕЧЕНИЕ ПРИ НАЖАТИИ (ГЛУБОКИЙ ПРОЖИМ) */
+/* НЕОН ПРИ НАЖАТИИ (ГЛУБОКИЙ ПРОЖИМ) */
 .btn-primary:active {
     transform: translateY(4px) scale(0.97);
     box-shadow: 
-        0 0 15px var(--color-neon-gold),
-        0 0 30px var(--color-neon-gold),
-        0 0 45px var(--color-neon-gold),
+        0 0 15px #FFD700,
+        0 0 30px #FFD700,
+        0 0 45px #FFD700,
         0 0 60px rgba(255, 215, 0, 0.7),
         inset 0 0 30px rgba(255, 215, 0, 0.5);
 }
@@ -182,7 +178,6 @@ body::after {
     color: #F4E8C1;
     border: 2px solid #8B7355;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-    /* БОЛЕЕ РВАНЫЕ КРАЯ */
     clip-path: polygon(
         0% 4%, 2% 1%, 4% 5%, 6% 2%, 8% 6%, 10% 1%, 12% 5%, 14% 3%, 
         16% 0%, 18% 4%, 20% 2%, 22% 6%, 24% 1%, 26% 5%, 28% 3%, 
@@ -222,17 +217,17 @@ body::after {
 .btn-secondary:hover {
     transform: translateY(-3px);
     box-shadow: 
-        0 0 10px var(--color-neon-gold),
-        0 0 20px var(--color-neon-gold),
+        0 0 10px #FFD700,
+        0 0 20px #FFD700,
         0 0 30px rgba(255, 215, 0, 0.4);
-    border-color: var(--color-neon-gold);
+    border-color: #FFD700;
 }
 
 .btn-secondary:active {
     transform: translateY(4px);
     box-shadow: 
-        0 0 15px var(--color-neon-gold),
-        0 0 30px var(--color-neon-gold),
+        0 0 15px #FFD700,
+        0 0 30px #FFD700,
         0 0 45px rgba(255, 215, 0, 0.6);
 }
 
@@ -242,12 +237,19 @@ body::after {
 }
 
 .btn-glow {
-    animation: papyrusGlow 4s ease-in-out infinite;
+    animation: buttonGlow 4s ease-in-out infinite;
 }
 
-@keyframes papyrusGlow {
-    0%, 100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
-    50% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.2); }
+@keyframes buttonGlow {
+    0%, 100% { 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    50% { 
+        box-shadow: 
+            0 4px 15px rgba(0, 0, 0, 0.4),
+            0 0 15px rgba(255, 215, 0, 0.3),
+            0 0 25px rgba(255, 215, 0, 0.2);
+    }
 }
 
 .btn-block {
@@ -263,7 +265,7 @@ body::after {
     padding: 0 20px;
 }
 
-/* ПРОЗРАЧНАЯ ШАПКА - ИСПРАВЛЕНО */
+/* ПРОЗРАЧНАЯ ШАПКА */
 .header {
     position: fixed;
     top: 0;
