@@ -1110,3 +1110,36 @@ h1, h2, h3, h4 {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(212, 175, 55, 0.1);
 }
+/* ============================================
+   ЗВЁЗДНЫЕ ЧАСТИЦЫ НА ФОНЕ
+   ============================================ */
+
+/* Звёздные частицы на фоне */
+.stars-bg .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { 
+        opacity: 0.3; 
+        transform: scale(1); 
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.5); 
+    }
+}
+
+/* Увеличиваем количество звёзд */
+.stars-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
