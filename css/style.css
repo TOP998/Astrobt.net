@@ -1,23 +1,19 @@
-/* ============================================
-   ASTRO PREMIUM OPTIMIZED LANDING
-   ============================================ */
+/* =========================================
+ASTRO PREMIUM LANDING
+OPTIMIZED RESPONSIVE VERSION
+========================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;500;600&display=swap');
 
 :root{
 
---color-space-900:#0B0C15;
---color-space-800:#1A1A2E;
-
---color-white:#ffffff;
---color-gray-400:#9CA3AF;
-
---color-gold:#D4AF37;
-
-/* НЕОНОВЫЙ */
+--space:#0B0C15;
+--gold:#D4AF37;
+--gray:#9CA3AF;
+--white:#ffffff;
 --neon:#00FFF7;
 
---font-cinzel:'Cinzel',serif;
+--font-title:'Cinzel',serif;
 --font-body:'Inter',sans-serif;
 
 }
@@ -37,62 +33,27 @@ scroll-behavior:smooth;
 body{
 
 font-family:var(--font-body);
-color:var(--color-white);
+color:var(--white);
 line-height:1.6;
 
-background:#0B0C15;
+background-color:#0B0C15;
+
+/* ФОН */
+
+background-image:url("../images/space-bg.jpg");
+
+background-repeat:no-repeat;
+background-position:center top;
+background-size:contain;
 
 min-height:100vh;
 overflow-x:hidden;
-position:relative;
 
 }
 
-/* ============================================
-   BACKGROUND
-   ============================================ */
-
-body::before{
-
-content:'';
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background-image:url('../images/space-bg.jpg');
-
-/* НЕ РАСТЯГИВАЕТ КАРТИНКУ */
-
-background-size:cover;
-background-position:center top;
-background-repeat:no-repeat;
-
-opacity:.7;
-z-index:-1;
-
-animation:bgPulse 12s ease-in-out infinite;
-
-}
-
-@keyframes bgPulse{
-
-0%,100%{
-opacity:.65;
-}
-
-50%{
-opacity:.75;
-}
-
-}
-
-/* ============================================
-   CONTAINER
-   ============================================ */
+/* =====================================
+CONTAINER
+===================================== */
 
 .container{
 max-width:1200px;
@@ -100,9 +61,9 @@ margin:auto;
 padding:0 20px;
 }
 
-/* ============================================
-   HEADER (ПРОЗРАЧНАЯ)
-   ============================================ */
+/* =====================================
+HEADER
+===================================== */
 
 .header{
 
@@ -113,8 +74,6 @@ left:0;
 width:100%;
 z-index:1000;
 
-/* ПРОЗРАЧНАЯ */
-
 background:transparent;
 
 backdrop-filter:blur(4px);
@@ -123,70 +82,72 @@ backdrop-filter:blur(4px);
 
 .header-content{
 
-display:flex;
-justify-content:space-between;
-align-items:center;
-
 max-width:1200px;
 margin:auto;
-padding:16px 20px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:18px 20px;
 
 }
 
 .logo{
+
 display:flex;
 align-items:center;
-gap:12px;
+gap:10px;
+
 }
 
 .logo-text{
 
-font-family:var(--font-cinzel);
+font-family:var(--font-title);
 font-size:24px;
-color:var(--color-gold);
+color:var(--gold);
 
 }
 
 .nav{
+
 display:flex;
 gap:30px;
+
 }
 
 .nav a{
 
-color:white;
 text-decoration:none;
+color:var(--white);
+font-weight:500;
 
 }
 
 .nav a:hover{
-color:var(--color-gold);
+color:var(--gold);
 }
 
-/* ============================================
-   BUTTONS (МЕНЬШЕ)
-   ============================================ */
+/* =====================================
+BUTTONS
+===================================== */
 
 .btn{
 
 display:inline-block;
 
-padding:14px 30px;
-font-size:15px;
+padding:12px 28px;
+font-size:14px;
 
-font-family:var(--font-cinzel);
+font-family:var(--font-title);
 font-weight:700;
 
-letter-spacing:1px;
-
 border-radius:8px;
-
 border:none;
+
 cursor:pointer;
 
 transition:.3s;
-
-will-change:transform,box-shadow;
 
 }
 
@@ -207,18 +168,16 @@ border:1px solid #8B7355;
 
 }
 
-/* НЕОНОВОЕ СВЕЧЕНИЕ */
-
 .btn-primary:hover{
-
-transform:translateY(-2px);
 
 box-shadow:
 
 0 0 5px var(--neon),
 0 0 10px var(--neon),
 0 0 20px var(--neon),
-0 0 40px var(--neon);
+0 0 35px var(--neon);
+
+transform:translateY(-2px);
 
 }
 
@@ -241,24 +200,20 @@ border:1px solid #8B7355;
 
 .btn-secondary:hover{
 
-transform:translateY(-2px);
-
 box-shadow:
-
-0 0 5px var(--neon),
-0 0 10px var(--neon),
-0 0 20px var(--neon);
+0 0 6px var(--neon),
+0 0 14px var(--neon),
+0 0 24px var(--neon);
 
 }
 
-/* ============================================
-   HERO
-   ============================================ */
+/* =====================================
+HERO
+===================================== */
 
 .hero{
 
 padding:170px 20px 100px;
-
 text-align:center;
 
 max-width:900px;
@@ -268,27 +223,29 @@ margin:auto;
 
 .hero-title{
 
+font-family:var(--font-title);
+font-weight:900;
+
 font-size:56px;
 line-height:1.2;
-
-font-family:var(--font-cinzel);
-font-weight:900;
 
 margin-bottom:24px;
 
 }
 
 .text-gold{
-color:var(--color-gold);
+color:var(--gold);
 }
 
 .hero-subtitle{
 
-font-size:19px;
-color:var(--color-gray-400);
+font-size:20px;
+color:var(--gray);
 
-max-width:700px;
-margin:0 auto 40px;
+max-width:650px;
+margin:auto;
+
+margin-bottom:40px;
 
 }
 
@@ -296,22 +253,24 @@ margin:0 auto 40px;
 
 display:flex;
 justify-content:center;
-gap:18px;
+gap:16px;
+
 flex-wrap:wrap;
 
 }
 
-/* ============================================
-   SECTIONS
-   ============================================ */
+/* =====================================
+SECTIONS
+===================================== */
 
 .section-title{
 
-font-size:42px;
-text-align:center;
+font-family:var(--font-title);
 
-font-family:var(--font-cinzel);
-color:var(--color-gold);
+font-size:42px;
+color:var(--gold);
+
+text-align:center;
 
 margin-bottom:60px;
 
@@ -348,9 +307,8 @@ gap:24px;
 
 background:rgba(26,26,46,.75);
 
-border-radius:14px;
-
 padding:28px;
+border-radius:14px;
 
 border:1px solid rgba(212,175,55,.2);
 
@@ -362,14 +320,25 @@ transition:.3s;
 .feature-card:hover{
 
 transform:translateY(-5px);
-
-border-color:var(--color-gold);
+border-color:var(--gold);
 
 }
 
-/* ============================================
-   LAPTOP
-   ============================================ */
+/* =====================================
+ADAPTIVE
+===================================== */
+
+/* LARGE MONITORS */
+
+@media (min-width:1600px){
+
+.container{
+max-width:1400px;
+}
+
+}
+
+/* LAPTOP */
 
 @media (max-width:1200px){
 
@@ -377,11 +346,13 @@ border-color:var(--color-gold);
 font-size:46px;
 }
 
+body{
+background-size:cover;
 }
 
-/* ============================================
-   TABLET
-   ============================================ */
+}
+
+/* TABLET */
 
 @media (max-width:992px){
 
@@ -398,14 +369,16 @@ font-size:38px;
 }
 
 .hero-subtitle{
-font-size:17px;
+font-size:18px;
+}
+
+body{
+background-size:cover;
 }
 
 }
 
-/* ============================================
-   PHONE
-   ============================================ */
+/* PHONE */
 
 @media (max-width:768px){
 
@@ -428,11 +401,14 @@ width:100%;
 font-size:30px;
 }
 
+body{
+background-size:cover;
+background-position:center;
 }
 
-/* ============================================
-   SMALL PHONE
-   ============================================ */
+}
+
+/* SMALL PHONE */
 
 @media (max-width:480px){
 
