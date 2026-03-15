@@ -281,12 +281,8 @@ body::after {
 }
 
 .nav a {
-    color: var(--color-white);
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    font-family: var(--font-body);
-    text-shadow: 0 0 5px rgba(0,0,0,0.8);
+    color: var(--color-gold-400);
+    text-shadow: 0 0 10px var(--color-gold-400);
 }
 
 .nav a:hover {
