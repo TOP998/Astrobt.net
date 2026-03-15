@@ -592,11 +592,7 @@ body::after {
     height: 100%;
     overflow: hidden;
 
-    background: radial-gradient(
-        ellipse at bottom,
-        #0d0d2b 0%,
-        #000000 100%
-    );
+    
 
     z-index: -1;
 }
