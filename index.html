@@ -25,12 +25,22 @@
                 <span class="logo-text">Astrobot</span>
             </div>
             <nav class="nav">
-                <a href="#features">Возможности</a>
-                <a href="#how-it-works">Как работает</a>
-                <a href="#reviews">Отзывы</a>
-                <a href="#pricing">Цены</a>
-                <a href="#faq">FAQ</a>
+                <a href="#features"data-i18n="nav_features">Возможности</a>
+                <a href="#how-it-worksdata-i18n="nav_features">Как работает</a>
+                <a href="#reviews"data-i18n="nav_features">Отзывы</a>
+                <a href="#pricing"data-i18n="nav_features">Цены</a>
+                <a href="#faq" data-i18n="nav_features">FAQ</a>
             </nav>
+            <!-- Переключатель языков -->
+<div class="lang-switcher">
+    <button onclick="changeLang('ru')" class="lang-btn active">🇷🇺 RU</button>
+    <span class="lang-sep">|</span>
+    <button onclick="changeLang('en')" class="lang-btn">🇬🇧 EN</button>
+    <span class="lang-sep">|</span>
+    <button onclick="changeLang('es')" class="lang-btn">🇪🇸 ES</button>
+    <span class="lang-sep">|</span>
+    <button onclick="changeLang('de')" class="lang-btn">🇩🇪 DE</button>
+</div>
             <a href="https://t.me/astrotgbot_bot" class="btn btn-primary header-btn">
                 Открыть в Telegram
             </a>
@@ -55,7 +65,7 @@
             <a href="https://t.me/astrotgbot_bot" class="btn btn-primary btn-lg btn-glow">
                 ✦ Открыть портал судьбы ✦
             </a>
-            <a href="#features" class="btn btn-secondary btn-lg">
+            <a href="#features"  data-i18n="nav_features"class="btn btn-secondary btn-lg">
                 ✧ Познать тайны звёзд ✧
             </a>
         </div>
@@ -113,7 +123,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features" id="features">
+    <section class="features" data-i18n="nav_features" id="features">
         <div class="container">
             <h2 class="section-title">Возможности</h2>
             <div class="features-grid">
