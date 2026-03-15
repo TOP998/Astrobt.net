@@ -289,13 +289,21 @@ body::after {
 }
 
 .nav a {
-    color: var(--color-gold-400);
-    text-shadow: 0 0 10px var(--color-gold-400);
+    color: #c084ff;
+    text-shadow:
+        0 0 5px #c084ff,
+        0 0 10px #c084ff,
+        0 0 20px #9333ea,
+        0 0 40px #9333ea;
 }
 
 .nav a:hover {
-    color: var(--color-gold-400);
-    text-shadow: 0 0 10px var(--color-gold-400);
+    color: #e9d5ff;
+    text-shadow:
+        0 0 8px #c084ff,
+        0 0 15px #c084ff,
+        0 0 30px #9333ea,
+        0 0 60px #9333ea;
 }
 
 .header-btn {
