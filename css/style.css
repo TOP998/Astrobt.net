@@ -32,18 +32,16 @@ html {
 /* === НАЧАЛО ФОНА === */
 body {
     font-family: var(--font-body);
-    background-color: #050508; /* Черный цвет подложки */
+    background-color: #050508; /* Цвет подложки (на случай если картинка не прогрузится) */
     
-    /* ВОТ ЗДЕСЬ МЫ СТАВИМ КАРТИНКУ */
-    background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), /* Затемнение сверху */
-        url('../images/hero-bg.jpg'); /* Ваша картинка */
+    /* ЧИСТАЯ КАРТИНКА БЕЗ ЗАТЕМНЕНИЯ */
+    background-image: url('../images/hero-bg.jpg');
     
-    /* ГЛАВНОЕ ДЛЯ АДАПТИВНОСТИ: */
-    background-size: cover;       /* Заполняет весь экран без искажений */
-    background-position: center;  /* Центрирует картинку */
-    background-repeat: no-repeat; /* Не повторяет её */
-    background-attachment: fixed; /* Фиксирует фон при прокрутке (красивый эффект) */
+    /* АДАПТИВНОСТЬ (чтобы не растягивало) */
+    background-size: cover;       /* Заполняет экран, сохраняя пропорции */
+    background-position: center;  /* Центрирует изображение */
+    background-repeat: no-repeat; /* Не повторяет плиткой */
+    background-attachment: fixed; /* Фиксирует фон при прокрутке */
     
     color: var(--color-white);
     line-height: 1.6;
