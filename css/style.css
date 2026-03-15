@@ -29,15 +29,29 @@ html {
     scroll-behavior: smooth;
 }
 
+/* === НАЧАЛО ФОНА === */
 body {
     font-family: var(--font-body);
-    background-color: #050508;
+    background-color: #050508; /* Черный цвет подложки */
+    
+    /* ВОТ ЗДЕСЬ МЫ СТАВИМ КАРТИНКУ */
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), /* Затемнение сверху */
+        url('../images/hero-bg.jpg'); /* Ваша картинка */
+    
+    /* ГЛАВНОЕ ДЛЯ АДАПТИВНОСТИ: */
+    background-size: cover;       /* Заполняет весь экран без искажений */
+    background-position: center;  /* Центрирует картинку */
+    background-repeat: no-repeat; /* Не повторяет её */
+    background-attachment: fixed; /* Фиксирует фон при прокрутке (красивый эффект) */
+    
     color: var(--color-white);
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
 }
+/* === КОНЕЦ ФОНА === */
 
 /* === ИСПРАВЛЕННЫЙ ФОН (МАГ ЦЕЛИКОМ) === */
 .bg-container {
