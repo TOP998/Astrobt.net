@@ -289,21 +289,19 @@ body::after {
 }
 
 .nav a {
-    color: #e0c0ff;
+    color: #ffffff;
     text-shadow:
-        0 0 6px #ffffff,
-        0 0 12px #ffffff,
-        0 0 20px rgba(176, 38, 255, 0.6),
-        0 0 40px rgba(176, 38, 255, 0.6);
+        0 0 5px #ffffff,
+        0 0 10px rgba(255,255,255,0.8),
+        0 0 20px rgba(176,38,255,0.4);
 }
 
 .nav a:hover {
-    color: #f0d9ff;
+    color: #ffffff;
     text-shadow:
         0 0 8px #ffffff,
-        0 0 16px #ffffff,
-        0 0 30px rgba(176, 38, 255, 0.8),
-        0 0 60px rgba(176, 38, 255, 0.8);
+        0 0 15px rgba(255,255,255,0.9),
+        0 0 30px rgba(176,38,255,0.6);
 }
 
 .header-btn {
