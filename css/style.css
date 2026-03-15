@@ -177,6 +177,14 @@ body::after {
 }
 
 /* 2. Кнопка .btn-secondary (Темная) */
+.btn-secondary {
+    border-color: #ffffff;
+    box-shadow:
+        0 0 10px #ffffff,
+        0 0 20px #ffffff,
+        0 0 40px rgba(176, 38, 255, 0.4);
+    color: #e0c0ff;
+}
 .btn-secondary:hover {
     transform: translateY(-2px);
     border-color: #ffffff;
