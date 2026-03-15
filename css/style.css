@@ -542,3 +542,43 @@ body::after {
         margin-right: auto;
     }
 }
+/* ============================================
+   СТИЛИ ПЕРЕКЛЮЧАТЕЛЯ ЯЗЫКОВ
+   ============================================ */
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 20px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    font-family: var(--font-body);
+}
+
+.lang-btn:hover, .lang-btn.active {
+    background: rgba(212, 175, 55, 0.2);
+    border-color: var(--color-gold-400);
+    color: var(--color-gold-400);
+}
+
+.lang-sep {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+}
+
+/* Адаптив: на телефонах скрываем, чтобы не мешал */
+@media (max-width: 768px) {
+    .lang-switcher {
+        display: none; 
+    }
+}
