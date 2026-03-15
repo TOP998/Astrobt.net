@@ -421,5 +421,53 @@
     </div>
 
     <script src="js/main.js"></script>
+        <script src="js/main.js"></script>
+    
+    <!-- УМНЫЙ ТАЙМЕР СРОЧНОСТИ (1 ЧАС) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const timerElement = document.getElementById('ctaTimer');
+            if (!timerElement) return;
+
+            // Проверяем, есть ли уже сохраненное время окончания в браузере пользователя
+            let endTime = localStorage.getItem('astroTimerEnd');
+
+            // Если нет или время истекло — ставим новое (1 час = 60 минут)
+            if (!endTime || new Date().getTime() > endTime) {
+                // Устанавливаем время: текущее время + 60 минут
+                endTime = new Date().getTime() + (60 * 60 * 1000); 
+                localStorage.setItem('astroTimerEnd', endTime);
+            }
+
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+
+                // Если время совсем вышло (редкий случай сбоя), перезапускаем
+                if (distance < 0) {
+                    endTime = new Date().getTime() + (60 * 60 * 1000);
+                    localStorage.setItem('astroTimerEnd', endTime);
+                }
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Обновляем текст, добавляя ноль спереди если нужно (09 вместо 9)
+                if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+                if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+                if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+            }
+
+            updateTimer(); // Запустить сразу
+            setInterval(updateTimer, 1000); // Обновлять каждую секунду
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
