@@ -145,32 +145,32 @@ body::after {
 /* 1. Кнопка .btn-primary (Светлая) */
 .btn-primary:hover {
     transform: translateY(-2px);
-    border-color: #b026ff; /* Цвет рамки */
+    border-color: #ffffff; /* Цвет рамки */
     box-shadow: 
-        0 0 10px #b026ff,
-        0 0 20px #b026ff,
-        0 0 40px #b026ff,
+        0 0 10px #ffffff,
+        0 0 20px #ffffff,
+        0 0 40px #ffffff,
         inset 0 0 10px rgba(176, 38, 255, 0.5);
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .btn-primary:active {
     transform: translateY(2px) scale(0.98);
-    border-color: #d48aff; /* Светло-фиолетовый при нажатии */
+    border-color: #ffffff; /* Светло-фиолетовый при нажатии */
     box-shadow: 
-        0 0 15px #b026ff,
-        0 0 30px #b026ff,
-        0 0 60px #b026ff,
+        0 0 15px #ffffff,
+        0 0 30px #ffffff,
+        0 0 60px #ffffff,
         inset 0 0 20px rgba(176, 38, 255, 0.7);
 }
 
 /* 2. Кнопка .btn-secondary (Темная) */
 .btn-secondary:hover {
     transform: translateY(-2px);
-    border-color: #b026ff;
+    border-color: #ffffff;
     box-shadow: 
-        0 0 10px #b026ff,
-        0 0 20px #b026ff,
+        0 0 10px #ffffff,
+        0 0 20px #ffffff,
         0 0 40px rgba(176, 38, 255, 0.4);
     color: #e0c0ff; /* Цвет текста становится светлее */
 }
@@ -178,8 +178,8 @@ body::after {
 .btn-secondary:active {
     transform: translateY(2px);
     box-shadow: 
-        0 0 15px #b026ff,
-        0 0 30px #b026ff,
+        0 0 15px #ffffff,
+        0 0 30px #ffffff,
         0 0 50px rgba(176, 38, 255, 0.6);
 }
 
