@@ -1,18 +1,21 @@
 /* ============================================
    ASTRO-PREMIUM LANDING PAGE STYLES
+   ПОЛНАЯ ВЕРСИЯ
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
     --color-space-900: #0B0C15;
+    --color-space-800: #1A1A2E;
     --color-gold-500: #D4AF37;
     --color-gold-400: #F4C430;
-    --color-neon-gold: #FFD700; /* Яркий неон */
+    --color-neon-gold: #FFD700;
     --color-white: #FFFFFF;
     --color-gray-400: #9CA3AF;
     
     --font-cinzel: 'Cinzel', serif;
+    --font-garamond: 'Cormorant Garamond', serif;
     --font-body: 'Inter', sans-serif;
 }
 
@@ -28,7 +31,7 @@ html {
 
 body {
     font-family: var(--font-body);
-    background-color: #050508; /* Темный фон подложка */
+    background-color: #050508;
     color: var(--color-white);
     line-height: 1.6;
     overflow-x: hidden;
@@ -36,8 +39,7 @@ body {
     position: relative;
 }
 
-/* === ИСПРАВЛЕННЫЙ ФОН === */
-/* Контейнер для фона, чтобы он не растягивался, а масштабировался */
+/* === ИСПРАВЛЕННЫЙ ФОН (МАГ ЦЕЛИКОМ) === */
 .bg-container {
     position: fixed;
     top: 0;
@@ -49,6 +51,7 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background: #000;
 }
 
 .bg-image {
@@ -57,14 +60,14 @@ body {
     background-image: url('../images/space-bg.jpg');
     background-position: center center;
     background-repeat: no-repeat;
-    /*Contain сохраняет пропорции, но могут быть поля. 
-      Если хотите заполнить экран с обрезкой краев - используйте cover, но с mask-image */
-    background-size: cover; 
-    opacity: 0.6;
+    /* ГЛАВНОЕ: contain сохраняет пропорции, чтобы маг был виден целиком */
+    background-size: contain; 
+    opacity: 0.8;
     animation: bgPulse 8s ease-in-out infinite;
-    /* Маска, чтобы края были мягче и текст читался лучше */
-    mask-image: radial-gradient(circle, black 40%, transparent 100%);
-    -webkit-mask-image: radial-gradient(circle, black 40%, transparent 100%);
+    
+    /* Виньетка: затемняем края, чтобы текст читался */
+    mask-image: radial-gradient(circle, black 40%, transparent 90%);
+    -webkit-mask-image: radial-gradient(circle, black 40%, transparent 90%);
 }
 
 @keyframes bgPulse {
@@ -72,7 +75,7 @@ body {
     50% { transform: scale(1.02); filter: brightness(1.1); }
 }
 
-/* Затемнение поверх фона для читаемости текста */
+/* Дополнительное затемнение для читаемости текста */
 body::after {
     content: '';
     position: fixed;
@@ -80,7 +83,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(5, 5, 8, 0.6); /* Полупрозрачный черный */
+    background: rgba(0, 0, 0, 0.5);
     z-index: -1;
     pointer-events: none;
 }
@@ -91,7 +94,7 @@ body::after {
 
 .btn {
     display: inline-block;
-    padding: 18px 40px; /* Чуть меньше */
+    padding: 18px 40px;
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
@@ -100,29 +103,28 @@ body::after {
     position: relative;
     letter-spacing: 2px;
     text-transform: uppercase;
-    transition: all 0.2s ease; /* Быстрая реакция */
-    border-radius: 4px; /* Слегка скруглим для безопасности клипа */
-    
-    /* Важно для неона: убираем стандартные тени */
-    box-shadow: none; 
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    box-shadow: none;
 }
 
-/* Текстура бумаги внутри кнопки */
 .btn::before {
     content: '';
     position: absolute;
-    top: 2px; left: 2px; right: 2px; bottom: 2px;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
     background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139, 115, 85, 0.1) 2px, rgba(139, 115, 85, 0.1) 4px);
     pointer-events: none;
     z-index: 1;
-    clip-path: inherit; /* Наследуем рваные края */
+    clip-path: inherit;
 }
 
 /* ЗОЛОТАЯ КНОПКА */
 .btn-primary {
     background: linear-gradient(135deg, #E8D5B7 0%, #F4E8C1 50%, #D4C4A8 100%);
     color: #2C1810;
-    /* Рваные края через clip-path */
     clip-path: polygon(
         0% 2%, 2% 0%, 5% 2%, 8% 0%, 12% 3%, 15% 1%, 18% 3%, 22% 1%, 
         25% 3%, 28% 1%, 32% 3%, 35% 1%, 38% 3%, 42% 1%, 45% 3%, 48% 1%, 
@@ -134,14 +136,12 @@ body::after {
         32% 99%, 28% 97%, 25% 99%, 22% 97%, 18% 99%, 15% 97%, 12% 99%, 
         8% 97%, 5% 99%, 2% 97%, 0% 99%
     );
-    /* Начальная рамка */
     border: 2px solid #8B7355;
 }
 
 /* НЕОН ПРИ НАВЕДЕНИИ */
 .btn-primary:hover {
     transform: translateY(-2px);
-    /* Яркая золотая рамка + мощное свечение */
     border-color: var(--color-neon-gold);
     box-shadow: 
         0 0 10px var(--color-neon-gold),
@@ -151,10 +151,10 @@ body::after {
     text-shadow: 0 0 5px rgba(44, 24, 16, 0.5);
 }
 
-/* НЕОН ПРИ НАЖАТИИ (ПРОЖИМ) */
+/* НЕОН ПРИ НАЖАТИИ */
 .btn-primary:active {
     transform: translateY(2px) scale(0.98);
-    border-color: #FFFACD; /* Еще светлее */
+    border-color: #FFFACD;
     box-shadow: 
         0 0 15px var(--color-neon-gold),
         0 0 30px var(--color-neon-gold),
@@ -306,7 +306,7 @@ body::after {
     border-radius: 2px;
 }
 
-/* Hero */
+/* Hero Section */
 .hero {
     padding: 180px 20px 100px;
     position: relative;
@@ -428,7 +428,7 @@ body::after {
 }
 
 .problem-card, .feature-card, .review-card, .pricing-card {
-    background: rgba(11, 12, 21, 0.85); /* Более темный фон карточек */
+    background: rgba(11, 12, 21, 0.85);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 16px;
