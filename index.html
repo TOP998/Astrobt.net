@@ -32,18 +32,19 @@
                 <a href="#faq" data-i18n="nav_features">FAQ</a>
             </nav>
             <!-- Переключатель языков -->
+<!-- АККУРАТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ -->
 <div class="lang-switcher">
-    <button onclick="changeLang('ru')" class="lang-btn active">🇷🇺 RU</button>
-    <span class="lang-sep">|</span>
-    <button onclick="changeLang('en')" class="lang-btn">🇬🇧 EN</button>
-    <span class="lang-sep">|</span>
-    <button onclick="changeLang('es')" class="lang-btn">🇪🇸 ES</button>
-    <span class="lang-sep">|</span>
-    <button onclick="changeLang('de')" class="lang-btn">🇩🇪 DE</button>
+    <select id="languageSelect" onchange="changeLang(this.value)">
+        <option value="ru">🇷🇺 RU</option>
+        <option value="en">🇬🇧 EN</option>
+        <option value="es">🇪🇸 ES</option>
+        <option value="de">🇩🇪 DE</option>
+    </select>
 </div>
-            <a href="https://t.me/astrotgbot_bot" class="btn btn-primary header-btn">
-                Открыть в Telegram
-            </a>
+
+<a href="https://t.me/astrotgbt_bot" class="btn btn-primary header-btn">
+    Открыть в Telegram
+</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
