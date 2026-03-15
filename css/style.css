@@ -57,7 +57,7 @@ body {
 .bg-image {
     width: 100%;
     height: 100%;
-    background-image: url('../images/space-bg.jpg');
+    //
     background-position: center center;
     background-repeat: no-repeat;
     /* ГЛАВНОЕ: contain сохраняет пропорции, чтобы маг был виден целиком */
