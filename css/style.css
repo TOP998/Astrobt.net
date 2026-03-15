@@ -140,63 +140,60 @@ body::after {
 }
 
 /* НЕОН ПРИ НАВЕДЕНИИ */
+/* === ЗАМЕНИТЕ ЭТИ БЛОКИ В ВАШЕМ CSS === */
+
+/* 1. Кнопка .btn-primary (Светлая) */
 .btn-primary:hover {
     transform: translateY(-2px);
-    border-color: var(--color-neon-gold);
+    border-color: #b026ff; /* Цвет рамки */
     box-shadow: 
-        0 0 10px var(--color-neon-gold),
-        0 0 20px var(--color-neon-gold),
-        0 0 40px var(--color-neon-gold),
-        inset 0 0 10px rgba(255, 215, 0, 0.5);
-    text-shadow: 0 0 5px rgba(44, 24, 16, 0.5);
+        0 0 10px #b026ff,
+        0 0 20px #b026ff,
+        0 0 40px #b026ff,
+        inset 0 0 10px rgba(176, 38, 255, 0.5);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-/* НЕОН ПРИ НАЖАТИИ */
 .btn-primary:active {
     transform: translateY(2px) scale(0.98);
-    border-color: #FFFACD;
+    border-color: #d48aff; /* Светло-фиолетовый при нажатии */
     box-shadow: 
-        0 0 15px var(--color-neon-gold),
-        0 0 30px var(--color-neon-gold),
-        0 0 60px var(--color-neon-gold),
-        inset 0 0 20px rgba(255, 215, 0, 0.7);
+        0 0 15px #b026ff,
+        0 0 30px #b026ff,
+        0 0 60px #b026ff,
+        inset 0 0 20px rgba(176, 38, 255, 0.7);
 }
 
-/* ТЁМНАЯ КНОПКА */
-.btn-secondary {
-    background: linear-gradient(135deg, #3D2817 0%, #5C4033 50%, #2C1810 100%);
-    color: #F4E8C1;
-    clip-path: polygon(
-        0% 3%, 3% 1%, 6% 4%, 9% 2%, 12% 5%, 15% 2%, 18% 4%, 21% 2%, 
-        24% 4%, 27% 2%, 30% 4%, 33% 2%, 36% 4%, 39% 2%, 42% 4%, 45% 2%, 
-        48% 4%, 51% 2%, 54% 4%, 57% 2%, 60% 4%, 63% 2%, 66% 4%, 69% 2%, 
-        72% 4%, 75% 2%, 78% 4%, 81% 2%, 84% 4%, 87% 2%, 90% 4%, 93% 2%, 
-        96% 4%, 99% 2%, 100% 4%, 100% 96%, 97% 99%, 94% 96%, 91% 99%, 
-        88% 96%, 85% 99%, 82% 96%, 79% 99%, 76% 96%, 73% 99%, 70% 96%, 
-        67% 99%, 64% 96%, 61% 99%, 58% 96%, 55% 99%, 52% 96%, 49% 99%, 
-        46% 96%, 43% 99%, 40% 96%, 37% 99%, 34% 96%, 31% 99%, 28% 96%, 
-        25% 99%, 22% 96%, 19% 99%, 16% 96%, 13% 99%, 10% 96%, 7% 99%, 
-        4% 96%, 1% 99%, 0% 96%
-    );
-    border: 2px solid #5C4033;
-}
-
+/* 2. Кнопка .btn-secondary (Темная) */
 .btn-secondary:hover {
     transform: translateY(-2px);
-    border-color: var(--color-neon-gold);
+    border-color: #b026ff;
     box-shadow: 
-        0 0 10px var(--color-neon-gold),
-        0 0 20px var(--color-neon-gold),
-        0 0 40px rgba(255, 215, 0, 0.4);
-    color: #FFFACD;
+        0 0 10px #b026ff,
+        0 0 20px #b026ff,
+        0 0 40px rgba(176, 38, 255, 0.4);
+    color: #e0c0ff; /* Цвет текста становится светлее */
 }
 
 .btn-secondary:active {
     transform: translateY(2px);
     box-shadow: 
-        0 0 15px var(--color-neon-gold),
-        0 0 30px var(--color-neon-gold),
-        0 0 50px rgba(255, 215, 0, 0.6);
+        0 0 15px #b026ff,
+        0 0 30px #b026ff,
+        0 0 50px rgba(176, 38, 255, 0.6);
+}
+
+/* 3. Анимация свечения (если есть класс btn-glow) */
+@keyframes buttonGlow {
+    0%, 100% { 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    50% { 
+        box-shadow: 
+            0 4px 15px rgba(0, 0, 0, 0.4),
+            0 0 15px rgba(176, 38, 255, 0.3),
+            0 0 25px rgba(176, 38, 255, 0.2);
+    }
 }
 
 .btn-lg {
