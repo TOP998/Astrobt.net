@@ -637,15 +637,23 @@ body::after {
     width:200%;
     height:200%;
     background-image:
-        radial-gradient(2px 2px at 20% 30%, #ffffff, transparent),
-        radial-gradient(1px 1px at 40% 70%, #ffffff, transparent),
-        radial-gradient(2px 2px at 70% 40%, #ffffff, transparent),
-        radial-gradient(1px 1px at 90% 60%, #ffffff, transparent),
-        radial-gradient(2px 2px at 50% 10%, #ffffff, transparent),
-        radial-gradient(1px 1px at 80% 80%, #ffffff, transparent);
+    radial-gradient(3px 3px at 10% 20%, #ffffff, transparent),
+    radial-gradient(2px 2px at 20% 30%, #ffffff, transparent),
+    radial-gradient(3px 3px at 30% 80%, #ffffff, transparent),
+    radial-gradient(2px 2px at 40% 10%, #ffffff, transparent),
+    radial-gradient(3px 3px at 50% 50%, #ffffff, transparent),
+    radial-gradient(2px 2px at 60% 70%, #ffffff, transparent),
+    radial-gradient(3px 3px at 70% 20%, #ffffff, transparent),
+    radial-gradient(2px 2px at 80% 40%, #ffffff, transparent),
+    radial-gradient(3px 3px at 90% 60%, #ffffff, transparent),
+    radial-gradient(2px 2px at 15% 75%, #ffffff, transparent),
+    radial-gradient(3px 3px at 35% 60%, #ffffff, transparent),
+    radial-gradient(2px 2px at 55% 25%, #ffffff, transparent),
+    radial-gradient(3px 3px at 75% 85%, #ffffff, transparent),
+    radial-gradient(2px 2px at 95% 15%, #ffffff, transparent);
     background-repeat: repeat;
-    background-size:600px 600px;
-    animation: starsMove 120s linear infinite;
+    background-size:350px 350px;
+    animation: starsMove 120s linear infinite, starsBlink 3s ease-in-out infinite;
     opacity:0.7;
 }
 
