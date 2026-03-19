@@ -41,7 +41,7 @@ body {
     background-size: cover;       /* Заполняет экран, сохраняя пропорции */
     background-position: center;  /* Центрирует изображение */
     background-repeat: no-repeat; /* Не повторяет плиткой */
-    background-attachment: scroll; /* Фиксирует фон при прокрутке */
+    background-attachment: fixed; /* Фиксирует фон при прокрутке */
     
     color: var(--color-white);
     line-height: 1.6;
