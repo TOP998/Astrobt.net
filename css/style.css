@@ -35,7 +35,7 @@ body {
     background-color: #050508; /* Цвет подложки (на случай если картинка не прогрузится) */
     
     /* ЧИСТАЯ КАРТИНКА БЕЗ ЗАТЕМНЕНИЯ */
-    background-image: url('../images/galaktikafon.jpg');
+    background-image: url('../images/galaktikafon.jpg?v=2'');
     
     /* АДАПТИВНОСТЬ (чтобы не растягивало) */
     background-size: cover;       /* Заполняет экран, сохраняя пропорции */
