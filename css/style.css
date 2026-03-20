@@ -1,6 +1,6 @@
 /* ============================================
    ASTRO-PREMIUM LANDING PAGE STYLES
-   ПОЛНАЯ ВЕРСИЯ
+   ИСПРАВЛЕННАЯ ВЕРСИЯ
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
@@ -29,19 +29,18 @@ html {
     scroll-behavior: smooth;
 }
 
-/* === НАЧАЛО ФОНА === */
+/* === ГЛАВНЫЙ ФОН (BODY) === */
 body {
     font-family: var(--font-body);
-    background-color: #050508; /* Цвет подложки (на случай если картинка не прогрузится) */
+    background-color: #050508; /* Подложка, если картинка не загрузится */
     
-    /* ЧИСТАЯ КАРТИНКА БЕЗ ЗАТЕМНЕНИЯ */
-    background-image: url('../images/galaktikafon.jpg'');
+    /* ИСПРАВЛЕННЫЙ ПУТЬ (убрана лишняя кавычка) */
+    background-image: url('../images/galaktikafon.jpg');
     
-    /* АДАПТИВНОСТЬ (чтобы не растягивало) */
-    background-size: cover;       /* Заполняет экран, сохраняя пропорции */
-    background-position: center;  /* Центрирует изображение */
-    background-repeat: no-repeat; /* Не повторяет плиткой */
-    background-attachment: fixed; /* Фиксирует фон при прокрутке */
+    background-size: cover;       /* Заполняет экран */
+    background-position: center;  /* Центрирует */
+    background-repeat: no-repeat; 
+    background-attachment: fixed; /* Фиксирует при скролле */
     
     color: var(--color-white);
     line-height: 1.6;
@@ -49,45 +48,8 @@ body {
     min-height: 100vh;
     position: relative;
 }
-/* === КОНЕЦ ФОНА === */
 
-/* === ИСПРАВЛЕННЫЙ ФОН (МАГ ЦЕЛИКОМ) === */
-.bg-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background: #000;
-}
-
-.bg-image {
-    width: 100%;
-    height: 100%;
-    //
-    background-position: center center;
-    background-repeat: no-repeat;
-    /* ГЛАВНОЕ: contain сохраняет пропорции, чтобы маг был виден целиком */
-    background-size: contain; 
-    opacity: 0.8;
-    animation: bgPulse 8s ease-in-out infinite;
-    
-    /* Виньетка: затемняем края, чтобы текст читался */
-    mask-image: radial-gradient(circle, black 40%, transparent 90%);
-    -webkit-mask-image: radial-gradient(circle, black 40%, transparent 90%);
-}
-
-@keyframes bgPulse {
-    0%, 100% { transform: scale(1); filter: brightness(1); }
-    50% { transform: scale(1.02); filter: brightness(1.1); }
-}
-
-/* Дополнительное затемнение для читаемости текста */
+/* Затемнение поверх фона для читаемости текста */
 body::after {
     content: '';
     position: fixed;
@@ -95,13 +57,41 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6); /* Чуть темнее для контраста */
     z-index: -1;
     pointer-events: none;
 }
 
+/* === ЗВЕЗДНЫЙ ФОН (АНИМАЦИЯ) === */
+.stars-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2; /* Позади body::after, но перед черным фоном */
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: starMove linear infinite;
+}
+
+@keyframes starMove {
+    from { transform: translateY(0px); opacity: 1; }
+    to { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* УДАЛЕНО: .bg-container и .bg-image, так как они конфликтовали и имели ошибки синтаксиса */
+
 /* ============================================
-   КНОПКИ С ЯРКИМ НЕОНОМ
+   КНОПКИ
    ============================================ */
 
 .btn {
@@ -120,100 +110,32 @@ body::after {
     box-shadow: none;
 }
 
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    right: 2px;
-    bottom: 2px;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139, 115, 85, 0.1) 2px, rgba(139, 115, 85, 0.1) 4px);
-    pointer-events: none;
-    z-index: 1;
-    clip-path: inherit;
-}
-
-/* ЗОЛОТАЯ КНОПКА */
 .btn-primary {
     background: linear-gradient(135deg, #E8D5B7 0%, #F4E8C1 50%, #D4C4A8 100%);
     color: #2C1810;
-    clip-path: polygon(
-        0% 2%, 2% 0%, 5% 2%, 8% 0%, 12% 3%, 15% 1%, 18% 3%, 22% 1%, 
-        25% 3%, 28% 1%, 32% 3%, 35% 1%, 38% 3%, 42% 1%, 45% 3%, 48% 1%, 
-        52% 3%, 55% 1%, 58% 3%, 62% 1%, 65% 3%, 68% 1%, 72% 3%, 75% 1%, 
-        78% 3%, 82% 1%, 85% 3%, 88% 1%, 92% 3%, 95% 1%, 98% 3%, 100% 1%, 
-        100% 98%, 98% 100%, 95% 98%, 92% 100%, 88% 97%, 85% 99%, 82% 97%, 
-        78% 99%, 75% 97%, 72% 99%, 68% 97%, 65% 99%, 62% 97%, 58% 99%, 
-        55% 97%, 52% 99%, 48% 97%, 45% 99%, 42% 97%, 38% 99%, 35% 97%, 
-        32% 99%, 28% 97%, 25% 99%, 22% 97%, 18% 99%, 15% 97%, 12% 99%, 
-        8% 97%, 5% 99%, 2% 97%, 0% 99%
-    );
     border: 2px solid #8B7355;
 }
 
-/* НЕОН ПРИ НАВЕДЕНИИ */
-/* === ЗАМЕНИТЕ ЭТИ БЛОКИ В ВАШЕМ CSS === */
-
-/* 1. Кнопка .btn-primary (Светлая) */
 .btn-primary:hover {
     transform: translateY(-2px);
-    border-color: #ffffff; /* Цвет рамки */
-    box-shadow: 
-        0 0 10px #ffffff,
-        0 0 20px #ffffff,
-        0 0 40px #ffffff,
-        inset 0 0 10px rgba(176, 38, 255, 0.5);
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
-
-.btn-primary:active {
-    transform: translateY(2px) scale(0.98);
-    border-color: #ffffff; /* Светло-фиолетовый при нажатии */
-    box-shadow: 
-        0 0 15px #ffffff,
-        0 0 30px #ffffff,
-        0 0 60px #ffffff,
-        inset 0 0 20px rgba(176, 38, 255, 0.7);
-}
-
-/* 2. Кнопка .btn-secondary (Темная) */
-.btn-secondary {
     border-color: #ffffff;
-    box-shadow:
+    box-shadow: 
         0 0 10px #ffffff,
         0 0 20px #ffffff,
-        0 0 40px rgba(176, 38, 255, 0.4);
-    color: #e0c0ff;
+        0 0 40px #ffffff;
 }
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
 .btn-secondary:hover {
     transform: translateY(-2px);
-    border-color: #ffffff;
-    box-shadow: 
-        0 0 10px #ffffff,
-        0 0 20px #ffffff,
-        0 0 40px rgba(176, 38, 255, 0.4);
-    color: #e0c0ff; /* Цвет текста становится светлее */
-}
-
-.btn-secondary:active {
-    transform: translateY(2px);
-    box-shadow: 
-        0 0 15px #ffffff,
-        0 0 30px #ffffff,
-        0 0 50px rgba(176, 38, 255, 0.6);
-}
-
-/* 3. Анимация свечения (если есть класс btn-glow) */
-@keyframes buttonGlow {
-    0%, 100% { 
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    }
-    50% { 
-        box-shadow: 
-            0 4px 15px rgba(0, 0, 0, 0.4),
-            0 0 15px rgba(176, 38, 255, 0.3),
-            0 0 25px rgba(176, 38, 255, 0.2);
-    }
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
 
 .btn-lg {
@@ -236,7 +158,7 @@ body::after {
     z-index: 2;
 }
 
-/* ПРОЗРАЧНАЯ ШАПКА */
+/* Header */
 .header {
     position: fixed;
     top: 0;
@@ -290,22 +212,12 @@ body::after {
 
 .nav a {
     color: #ffffff;
-    text-shadow:
-        0 0 5px #ffffff,
-        0 0 10px rgba(255,255,255,0.8),
-        0 0 20px rgba(176,38,255,0.4);
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
 .nav a:hover {
-    color: #ffffff;
-    text-shadow:
-        0 0 8px #ffffff,
-        0 0 15px rgba(255,255,255,0.9),
-        0 0 30px rgba(176,38,255,0.6);
-}
-
-.header-btn {
-    display: block;
+    color: var(--color-gold-400);
 }
 
 .mobile-menu-btn {
@@ -368,8 +280,6 @@ body::after {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    font-family: var(--font-body);
-    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
 }
 
 .hero-buttons {
@@ -388,29 +298,17 @@ body::after {
     flex-wrap: wrap;
 }
 
-.stat {
-    text-align: center;
-}
-
 .stat-number {
     display: block;
     font-family: var(--font-cinzel);
     font-size: 42px;
     font-weight: 900;
     color: var(--color-gold-400);
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
 }
 
 .stat-label {
     font-size: 14px;
     color: var(--color-gray-400);
-}
-
-.hero-trust {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
 }
 
 .trust-badge {
@@ -419,6 +317,7 @@ body::after {
     border-radius: 6px;
     font-size: 13px;
     border: 1px solid rgba(255,255,255,0.1);
+    margin: 0 5px;
 }
 
 /* Sections */
@@ -429,8 +328,6 @@ body::after {
     color: var(--color-gold-400);
     font-family: var(--font-cinzel);
     font-weight: 900;
-    position: relative;
-    z-index: 2;
 }
 
 .problem, .features, .how-it-works, .reviews, .pricing, .faq, .cta {
@@ -455,107 +352,188 @@ body::after {
     transition: all 0.3s ease;
 }
 
-.problem-card:hover, .feature-card:hover {
+.feature-card:hover {
     border-color: var(--color-gold-500);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.problem-icon, .feature-icon {
+.feature-icon {
     font-size: 48px;
     display: block;
     margin-bottom: 16px;
 }
 
-.problem-card h3, .feature-card h3 {
-    font-size: 22px;
-    margin-bottom: 12px;
+.vip-badge {
+    display: inline-block;
+    background: var(--color-gold-500);
+    color: #000;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* FAQ */
+.faq-item {
+    background: rgba(11, 12, 21, 0.6);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
     font-family: var(--font-cinzel);
-    font-weight: 700;
 }
 
-.problem-card p, .feature-card p {
-    font-size: 15px;
-    color: var(--color-gray-400);
-    font-family: var(--font-body);
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 20px;
+    background: rgba(0,0,0,0.3);
 }
 
-/* Stars */
-.stars-bg .star {
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding: 20px;
+}
+
+.faq-icon {
+    font-size: 24px;
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+/* Pricing */
+.pricing-card.popular {
+    border-color: var(--color-gold-500);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    position: relative;
+}
+
+.popular-badge {
     position: absolute;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle 3s ease-in-out infinite;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-gold-500);
+    color: #000;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-@keyframes twinkle {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.5); }
+.pricing-price {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--color-gold-400);
+    font-family: var(--font-cinzel);
 }
 
-.stars-bg {
+.pricing-period {
+    color: var(--color-gray-400);
+    margin-bottom: 20px;
+}
+
+.pricing-features {
+    list-style: none;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.pricing-features li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.feature-included { color: #fff; }
+.feature-excluded { color: var(--color-gray-400); text-decoration: line-through; opacity: 0.6; }
+
+/* Footer */
+.footer {
+    background: rgba(0,0,0,0.8);
+    padding: 60px 20px 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-links a, .footer-social a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--color-gold-400); }
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    color: var(--color-gray-400);
+    font-size: 14px;
+}
+
+/* Mobile Menu */
+.mobile-menu {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: rgba(11, 12, 21, 0.98);
+    backdrop-filter: blur(10px);
+    z-index: 1001;
+    transition: right 0.3s ease;
+    padding: 80px 40px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .nav, .header-btn {
-        display: none;
-    }
-    
-    .mobile-menu-btn {
-        display: flex;
-    }
-    
-    .hero {
-        padding: 140px 20px 80px;
-    }
-    
-    .hero-title {
-        font-size: 36px;
-    }
-    
-    .hero-subtitle {
-        font-size: 16px;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .btn-lg {
-        width: 100%;
-        padding: 18px 36px;
-    }
-    
-    .hero-stats {
-        flex-direction: column;
-        gap: 24px;
-    }
-    
-    .section-title {
-        font-size: 32px;
-    }
+.mobile-menu.active {
+    right: 0;
 }
 
-@media (min-width: 1400px) {
-    .container, .hero {
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+.mobile-menu nav {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
-/* ============================================
-   СТИЛИ ПЕРЕКЛЮЧАТЕЛЯ ЯЗЫКОВ
-   ============================================ */
 
+.mobile-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: var(--font-cinzel);
+}
+
+/* Language Switcher */
 .lang-switcher {
     display: flex;
     align-items: center;
@@ -572,7 +550,6 @@ body::after {
     cursor: pointer;
     font-size: 12px;
     transition: all 0.3s ease;
-    font-family: var(--font-body);
 }
 
 .lang-btn:hover, .lang-btn.active {
@@ -581,52 +558,30 @@ body::after {
     color: var(--color-gold-400);
 }
 
-.lang-sep {
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 12px;
-}
-
-/* Адаптив: на телефонах скрываем, чтобы не мешал */
+/* Responsive */
 @media (max-width: 768px) {
-    .lang-switcher {
-        display: none; 
+    .nav, .header-btn, .lang-switcher {
+        display: none;
     }
-}
-/* ФОН СО ЗВЕЗДАМИ */
-
-.stars-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-
     
-
-    z-index: -1;
-}
-
-.star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-
-    background: white;
-    border-radius: 50%;
-
-    animation: starMove linear infinite;
-}
-
-@keyframes starMove {
-    from {
-        transform: translateY(0px);
-        opacity: 1;
+    .mobile-menu-btn {
+        display: flex;
     }
-
-    to {
-        transform: translateY(-100vh);
-        opacity: 0;
+    
+    .hero {
+        padding: 140px 20px 80px;
+    }
+    
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .section-title {
+        font-size: 32px;
+    }
+    
+    .btn-lg {
+        width: 100%;
+        padding: 18px 36px;
     }
 }
-
