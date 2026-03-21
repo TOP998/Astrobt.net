@@ -357,27 +357,33 @@ body::after {
 }
 
 /* === КАРТОЧКИ ПРОБЛЕМ С НЕОНОМ === */
+/* === КАРТОЧКИ ПРОБЛЕМ С ЯРКИМ БЕЛЫМ НЕОНОМ === */
 .problem-card {
     background: rgba(11, 12, 21, 0.85);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Делаем рамку ярче и белее */
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    
     border-radius: 16px;
     padding: 24px;
     transition: all 0.3s ease;
     
-    /* Постоянное неоновое свечение */
+    /* ОЧЕНЬ ЯРКОЕ ПОСТОЯННОЕ СВЕЧЕНИЕ (Больше белого) */
     box-shadow: 
-        0 0 5px rgba(255, 255, 255, 0.3),
-        0 0 10px rgba(176, 38, 255, 0.2),
-        inset 0 0 10px rgba(255, 255, 255, 0.1);
+        0 0 10px rgba(255, 255, 255, 0.8),   /* Яркий ближний свет */
+        0 0 20px rgba(255, 255, 255, 0.4),   /* Среднее белое облако */
+        0 0 30px rgba(255, 255, 255, 0.2),   /* Дальнее рассеивание */
+        inset 0 0 15px rgba(255, 255, 255, 0.3); /* Внутреннее свечение */
 }
 
-/* Уменьшенные иконки */
+/* Уменьшенные иконки с ярким свечением */
 .problem-icon {
     font-size: 32px;
     display: block;
     margin-bottom: 16px;
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
+    /* Яркая белая тень вокруг иконки */
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
 }
 
 .problem-card h3 {
@@ -386,23 +392,24 @@ body::after {
     font-family: var(--font-cinzel);
     font-weight: 700;
     color: #fff;
-    text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    text-shadow: 0 0 8px rgba(255,255,255,0.8);
 }
 
 .problem-card p {
     font-size: 14px;
-    color: #ccc;
+    color: #eee; /* Текст тоже чуть светлее */
     line-height: 1.5;
 }
 
-/* Наведение на карточку */
+/* При наведении — эффект "вспышки" */
 .problem-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(176, 38, 255, 0.6);
+    border-color: #ffffff;
     box-shadow: 
-        0 0 15px rgba(255, 255, 255, 0.5),
-        0 0 30px rgba(176, 38, 255, 0.4),
-        inset 0 0 15px rgba(255, 255, 255, 0.2);
+        0 0 20px rgba(255, 255, 255, 1),    /* Максимальная яркость */
+        0 0 40px rgba(255, 255, 255, 0.6),
+        0 0 60px rgba(255, 255, 255, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 /* Остальные карточки */
