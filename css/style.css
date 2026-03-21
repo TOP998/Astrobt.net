@@ -356,34 +356,32 @@ body::after {
     margin-bottom: 48px;
 }
 
-/* === КАРТОЧКИ ПРОБЛЕМ С НЕОНОМ === */
-/* === КАРТОЧКИ ПРОБЛЕМ С ЯРКИМ БЕЛЫМ НЕОНОМ === */
+/* === КАРТОЧКИ ПРОБЛЕМ — СУПЕР ЯРКИЙ НЕОН === */
 .problem-card {
-    background: rgba(11, 12, 21, 0.85);
+    background: rgba(11, 12, 21, 0.9) !important; /* Чуть темнее фон для контраста */
     backdrop-filter: blur(10px);
     
-    /* Делаем рамку ярче и белее */
-    border: 1px solid rgba(255, 255, 255, 0.4); 
+    /* ЯРКАЯ БЕЛАЯ РАМКА */
+    border: 2px solid rgba(255, 255, 255, 0.6) !important; 
     
     border-radius: 16px;
     padding: 24px;
     transition: all 0.3s ease;
     
-    /* ОЧЕНЬ ЯРКОЕ ПОСТОЯННОЕ СВЕЧЕНИЕ (Больше белого) */
+    /* МОЩНОЕ СВЕЧЕНИЕ (Используем !important чтобы перебить кэш) */
     box-shadow: 
-        0 0 10px rgba(255, 255, 255, 0.8),   /* Яркий ближний свет */
-        0 0 20px rgba(255, 255, 255, 0.4),   /* Среднее белое облако */
-        0 0 30px rgba(255, 255, 255, 0.2),   /* Дальнее рассеивание */
-        inset 0 0 15px rgba(255, 255, 255, 0.3); /* Внутреннее свечение */
+        0 0 15px rgba(255, 255, 255, 0.9) !important,   /* Очень яркий центр */
+        0 0 30px rgba(255, 255, 255, 0.6) !important,   /* Широкое облако */
+        0 0 45px rgba(255, 255, 255, 0.3) !important,   /* Внешний ореол */
+        inset 0 0 20px rgba(255, 255, 255, 0.4) !important; /* Свет внутри */
 }
 
-/* Уменьшенные иконки с ярким свечением */
+/* Иконки тоже делаем ярче */
 .problem-icon {
     font-size: 32px;
     display: block;
     margin-bottom: 16px;
-    /* Яркая белая тень вокруг иконки */
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1)) !important; /* Максимальная яркость */
 }
 
 .problem-card h3 {
@@ -392,24 +390,24 @@ body::after {
     font-family: var(--font-cinzel);
     font-weight: 700;
     color: #fff;
-    text-shadow: 0 0 8px rgba(255,255,255,0.8);
+    text-shadow: 0 0 10px rgba(255,255,255,1);
 }
 
 .problem-card p {
     font-size: 14px;
-    color: #eee; /* Текст тоже чуть светлее */
+    color: #fff;
     line-height: 1.5;
 }
 
-/* При наведении — эффект "вспышки" */
+/* При наведении — эффект прожектора */
 .problem-card:hover {
     transform: translateY(-5px);
-    border-color: #ffffff;
+    border-color: #ffffff !important;
     box-shadow: 
-        0 0 20px rgba(255, 255, 255, 1),    /* Максимальная яркость */
-        0 0 40px rgba(255, 255, 255, 0.6),
-        0 0 60px rgba(255, 255, 255, 0.4),
-        inset 0 0 20px rgba(255, 255, 255, 0.5);
+        0 0 25px rgba(255, 255, 255, 1) !important,
+        0 0 50px rgba(255, 255, 255, 0.8) !important,
+        0 0 75px rgba(255, 255, 255, 0.5) !important,
+        inset 0 0 30px rgba(255, 255, 255, 0.6) !important;
 }
 
 /* Остальные карточки */
