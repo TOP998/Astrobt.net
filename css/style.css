@@ -625,3 +625,54 @@ body::after {
         0 0 60px rgba(176, 38, 255, 0.8),
         inset 0 0 20px rgba(255, 255, 255, 0.8);
 }
+
+/* === КАРТОЧКИ ПРОБЛЕМ С НЕОНОМ === */
+.problem-card {
+    background: rgba(11, 12, 21, 0.85); /* Полупрозрачный фон */
+    backdrop-filter: blur(10px);        /* Размытие фона под карточкой */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Тонкая рамка */
+    border-radius: 16px;
+    padding: 24px;                      /* Чуть меньше отступы */
+    transition: all 0.3s ease;
+    
+    /* ПОСТОЯННОЕ НЕОНОВОЕ СВЕЧЕНИЕ ПО ПЕРИМЕТРУ */
+    box-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.3),       /* Внутреннее белое свечение */
+        0 0 10px rgba(176, 38, 255, 0.2),       /* Внешнее фиолетовое свечение */
+        inset 0 0 10px rgba(255, 255, 255, 0.1); /* Внутреннее свечение внутрь карточки */
+}
+
+/* Уменьшаем иконки */
+.problem-icon {
+    font-size: 32px; /* Было 48px, стало меньше */
+    display: block;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); /* Легкое свечение самой иконки */
+}
+
+/* Заголовки карточек */
+.problem-card h3 {
+    font-size: 20px; /* Чуть компактнее */
+    margin-bottom: 12px;
+    font-family: var(--font-cinzel);
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255,255,255,0.5);
+}
+
+/* Текст карточек */
+.problem-card p {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+/* При наведении — усиление эффекта */
+.problem-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(176, 38, 255, 0.6);
+    box-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.5),
+        0 0 30px rgba(176, 38, 255, 0.4),
+        inset 0 0 15px rgba(255, 255, 255, 0.2);
+}
