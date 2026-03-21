@@ -585,3 +585,43 @@ body::after {
         padding: 18px 36px;
     }
 }
+
+/* === КНОПКА "ПОЗНАТЬ ТАЙНЫ ЗВЁЗД" (НЕОНОВАЯ) === */
+.btn-secondary {
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    /* Исходное мягкое свечение */
+    box-shadow: 
+        0 0 5px #ffffff,
+        0 0 10px rgba(255, 255, 255, 0.5),
+        inset 0 0 5px rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+/* При наведении — яркий неон */
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    border-color: #fff;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 
+        0 0 10px #ffffff,
+        0 0 20px #ffffff,
+        0 0 40px rgba(176, 38, 255, 0.6), /* Фиолетовый оттенок */
+        inset 0 0 10px rgba(255, 255, 255, 0.5);
+    text-shadow: 
+        0 0 10px #ffffff,
+        0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* При нажатии — вспышка */
+.btn-secondary:active {
+    transform: translateY(1px);
+    box-shadow: 
+        0 0 15px #ffffff,
+        0 0 30px #ffffff,
+        0 0 60px rgba(176, 38, 255, 0.8),
+        inset 0 0 20px rgba(255, 255, 255, 0.8);
+}
