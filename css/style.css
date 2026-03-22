@@ -1,6 +1,6 @@
 /* ============================================
    ASTRO-PREMIUM LANDING PAGE STYLES
-   ФИНАЛЬНАЯ ВЕРСИЯ С НЕОНОМ
+   ВЕРСИЯ С ЯРКИМ ФОНОМ
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
@@ -13,6 +13,7 @@
     --color-neon-gold: #FFD700;
     --color-white: #FFFFFF;
     --color-gray-400: #9CA3AF;
+    --color-neon-blue: #00d2ff;
     
     --font-cinzel: 'Cinzel', serif;
     --font-garamond: 'Cormorant Garamond', serif;
@@ -29,15 +30,17 @@ html {
     scroll-behavior: smooth;
 }
 
-/* === ГЛАВНЫЙ ФОН (BODY) === */
+/* === ГЛАВНЫЙ ФОН (BODY) — ТЕПЕРЬ ЯРЧЕ === */
 body {
     font-family: var(--font-body);
     background-color: #050508;
     background-image: url('../images/galaktikafon.jpg');
+    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    
     color: var(--color-white);
     line-height: 1.6;
     overflow-x: hidden;
@@ -45,7 +48,7 @@ body {
     position: relative;
 }
 
-/* Затемнение поверх фона */
+/* Затемнение поверх фона — УМЕНЬШЕНО ДО 25% */
 body::after {
     content: '';
     position: fixed;
@@ -53,12 +56,12 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.25); /* Было 0.6, стало 0.25 */
     z-index: -1;
     pointer-events: none;
 }
 
-/* === ЗВЕЗДНЫЙ ФОН === */
+/* === ЗВЕЗДНЫЙ ФОН (АНИМАЦИЯ) === */
 .stars-bg {
     position: fixed;
     top: 0;
@@ -115,12 +118,10 @@ body::after {
     box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #ffffff;
 }
 
-/* === НЕОНОВАЯ КНОПКА (ВТОРИЧНАЯ) === */
 .btn-secondary {
     background: transparent;
     border: 2px solid #ffffff;
     color: #ffffff;
-    /* Постоянное мягкое свечение */
     box-shadow: 
         0 0 5px #ffffff,
         0 0 10px rgba(255, 255, 255, 0.5),
@@ -129,7 +130,6 @@ body::after {
     transition: all 0.3s ease;
 }
 
-/* Наведение — яркий неон */
 .btn-secondary:hover {
     transform: translateY(-2px);
     background: rgba(255, 255, 255, 0.05);
@@ -141,7 +141,6 @@ body::after {
     text-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
-/* Нажатие — вспышка */
 .btn-secondary:active {
     transform: translateY(1px);
     box-shadow: 
@@ -288,11 +287,12 @@ body::after {
 
 .hero-subtitle {
     font-size: 20px;
-    color: #ddd;
+    color: #fff; /* Сделал текст чуть ярче */
     margin-bottom: 48px;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Тень для читаемости */
 }
 
 .hero-buttons {
@@ -321,7 +321,7 @@ body::after {
 
 .stat-label {
     font-size: 14px;
-    color: var(--color-gray-400);
+    color: #ddd;
 }
 
 .trust-badge {
@@ -329,7 +329,7 @@ body::after {
     padding: 6px 16px;
     border-radius: 6px;
     font-size: 13px;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
     margin: 0 5px;
 }
 
@@ -341,6 +341,7 @@ body::after {
     color: var(--color-gold-400);
     font-family: var(--font-cinzel);
     font-weight: 900;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
 .problem, .features, .how-it-works, .reviews, .pricing, .faq, .cta {
@@ -356,91 +357,110 @@ body::after {
     margin-bottom: 48px;
 }
 
-/* === КАРТОЧКИ ПРОБЛЕМ — СУПЕР ЯРКИЙ НЕОН === */
-.problem-card {
-    background: rgba(11, 12, 21, 0.9) !important; /* Чуть темнее фон для контраста */
+/* ============================================
+   ЕДИНЫЙ СТИЛЬ ДЛЯ ВСЕХ КАРТОЧЕК (НЕОН)
+   ============================================ */
+.problem-card, .feature-card, .review-card, .pricing-card {
+    background: rgba(11, 12, 21, 0.85); /* Чуть прозрачнее, чтобы фон пробивался */
     backdrop-filter: blur(10px);
     
-    /* ЯРКАЯ БЕЛАЯ РАМКА */
-    border: 2px solid rgba(255, 255, 255, 0.6) !important; 
+    border: none !important;
+    outline: none !important;
     
     border-radius: 16px;
-    padding: 24px;
+    padding: 24px !important;
     transition: all 0.3s ease;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     
-    /* МОЩНОЕ СВЕЧЕНИЕ (Используем !important чтобы перебить кэш) */
     box-shadow: 
-        0 0 15px rgba(255, 255, 255, 0.9) !important,   /* Очень яркий центр */
-        0 0 30px rgba(255, 255, 255, 0.6) !important,   /* Широкое облако */
-        0 0 45px rgba(255, 255, 255, 0.3) !important,   /* Внешний ореол */
-        inset 0 0 20px rgba(255, 255, 255, 0.4) !important; /* Свет внутри */
+        0 0 5px #ffffff,
+        0 0 15px var(--color-neon-blue),
+        0 0 30px rgba(0, 210, 255, 0.4),
+        inset 0 0 10px #ffffff,
+        inset 0 0 20px rgba(0, 210, 255, 0.3);
 }
 
-/* Иконки тоже делаем ярче */
-.problem-icon {
-    font-size: 32px;
+.problem-icon, .feature-icon, .review-stars {
+    font-size: 32px !important;
     display: block;
     margin-bottom: 16px;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1)) !important; /* Максимальная яркость */
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
 }
 
-.problem-card h3 {
-    font-size: 20px;
+.problem-card h3, .feature-card h3, .review-card h3, .pricing-card h3 {
+    font-size: 20px !important;
     margin-bottom: 12px;
     font-family: var(--font-cinzel);
     font-weight: 700;
     color: #fff;
-    text-shadow: 0 0 10px rgba(255,255,255,1);
+    text-shadow: 0 0 5px rgba(0, 210, 255, 0.8);
+    flex-grow: 1;
 }
 
-.problem-card p {
+.problem-card p, .feature-card p, .review-card p, .pricing-card li {
     font-size: 14px;
-    color: #fff;
+    color: #eee;
     line-height: 1.5;
 }
 
-/* При наведении — эффект прожектора */
-.problem-card:hover {
+.problem-card:hover, .feature-card:hover, .review-card:hover, .pricing-card:hover {
     transform: translateY(-5px);
-    border-color: #ffffff !important;
     box-shadow: 
-        0 0 25px rgba(255, 255, 255, 1) !important,
-        0 0 50px rgba(255, 255, 255, 0.8) !important,
-        0 0 75px rgba(255, 255, 255, 0.5) !important,
-        inset 0 0 30px rgba(255, 255, 255, 0.6) !important;
-}
-
-/* Остальные карточки */
-.feature-card, .review-card, .pricing-card {
-    background: rgba(11, 12, 21, 0.85);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    border-radius: 16px;
-    padding: 32px;
-    transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-    border-color: var(--color-gold-500);
-    transform: translateY(-5px);
-}
-
-.feature-icon {
-    font-size: 48px;
-    display: block;
-    margin-bottom: 16px;
+        0 0 10px #ffffff,
+        0 0 25px var(--color-neon-blue),
+        0 0 50px rgba(0, 210, 255, 0.6),
+        inset 0 0 15px #ffffff,
+        inset 0 0 30px rgba(0, 210, 255, 0.5);
 }
 
 .vip-badge {
     display: inline-block;
-    background: var(--color-gold-500);
+    background: linear-gradient(135deg, #F4C430, #D4AF37);
     color: #000;
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 6px 12px;
+    border-radius: 6px;
     font-size: 12px;
-    font-weight: bold;
-    margin-top: 10px;
+    font-weight: 800;
+    align-self: flex-start;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    margin-top: auto;
 }
+
+.pricing-card.popular {
+    border: 2px solid var(--color-gold-500) !important;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4) !important;
+}
+
+.pricing-price {
+    font-size: 36px !important;
+    color: var(--color-gold-400);
+    margin: 10px 0;
+    font-family: var(--font-cinzel);
+    font-weight: 900;
+}
+
+.pricing-period {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.pricing-features {
+    list-style: none;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.pricing-features li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.feature-included { color: #fff; }
+.feature-excluded { color: var(--color-gray-400); text-decoration: line-through; opacity: 0.6; }
 
 /* FAQ */
 .faq-item {
@@ -487,55 +507,9 @@ body::after {
     transform: rotate(45deg);
 }
 
-/* Pricing */
-.pricing-card.popular {
-    border-color: var(--color-gold-500);
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-    position: relative;
-}
-
-.popular-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--color-gold-500);
-    color: #000;
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.pricing-price {
-    font-size: 48px;
-    font-weight: 900;
-    color: var(--color-gold-400);
-    font-family: var(--font-cinzel);
-}
-
-.pricing-period {
-    color: var(--color-gray-400);
-    margin-bottom: 20px;
-}
-
-.pricing-features {
-    list-style: none;
-    margin-bottom: 30px;
-    text-align: left;
-}
-
-.pricing-features li {
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.feature-included { color: #fff; }
-.feature-excluded { color: var(--color-gray-400); text-decoration: line-through; opacity: 0.6; }
-
 /* Footer */
 .footer {
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.6); /* Фон футера тоже сделал прозрачнее */
     padding: 60px 20px 20px;
     border-top: 1px solid rgba(255,255,255,0.1);
     position: relative;
@@ -566,7 +540,7 @@ body::after {
     text-align: center;
     padding-top: 20px;
     border-top: 1px solid rgba(255,255,255,0.05);
-    color: var(--color-gray-400);
+    color: #ccc;
     font-size: 14px;
 }
 
