@@ -1,6 +1,6 @@
 /* ============================================
    ASTRO-PREMIUM LANDING PAGE STYLES
-   ВЕРСИЯ С ЗАТЕМНЕНИЕМ 40%
+   ФИНАЛЬНАЯ ВЕРСИЯ (КОМПАКТНЫЕ ТАРИФЫ + VIP КОРОНА)
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
@@ -48,7 +48,7 @@ body {
     position: relative;
 }
 
-/* Затемнение поверх фона — УСТАНОВЛЕНО 40% */
+/* Затемнение фона 40% */
 body::after {
     content: '';
     position: fixed;
@@ -56,12 +56,12 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Изменено с 0.25 на 0.4 */
+    background: rgba(0, 0, 0, 0.4);
     z-index: -1;
     pointer-events: none;
 }
 
-/* === ЗВЕЗДНЫЙ ФОН (АНИМАЦИЯ) === */
+/* === ЗВЕЗДНЫЙ ФОН === */
 .stars-bg {
     position: fixed;
     top: 0;
@@ -88,7 +88,7 @@ body::after {
 }
 
 /* ============================================
-   КНОПКИ (С НЕОНОМ)
+   КНОПКИ
    ============================================ */
 
 .btn {
@@ -358,7 +358,7 @@ body::after {
 }
 
 /* ============================================
-   ЕДИНЫЙ СТИЛЬ ДЛЯ ВСЕХ КАРТОЧЕК (НЕОН)
+   ОБЩИЕ СТИЛИ КАРТОЧЕК (НЕОН)
    ============================================ */
 .problem-card, .feature-card, .review-card, .pricing-card {
     background: rgba(11, 12, 21, 0.85);
@@ -375,6 +375,7 @@ body::after {
     display: flex;
     flex-direction: column;
     
+    /* БЕЛО-ГОЛУБОЙ НЕОН */
     box-shadow: 
         0 0 5px #ffffff,
         0 0 15px var(--color-neon-blue),
@@ -390,7 +391,7 @@ body::after {
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
 }
 
-.problem-card h3, .feature-card h3, .review-card h3, .pricing-card h3 {
+.problem-card h3, .feature-card h3, .review-card h3 {
     font-size: 20px !important;
     margin-bottom: 12px;
     font-family: var(--font-cinzel);
@@ -400,13 +401,13 @@ body::after {
     flex-grow: 1;
 }
 
-.problem-card p, .feature-card p, .review-card p, .pricing-card li {
+.problem-card p, .feature-card p, .review-card p {
     font-size: 14px;
     color: #eee;
     line-height: 1.5;
 }
 
-.problem-card:hover, .feature-card:hover, .review-card:hover, .pricing-card:hover {
+.problem-card:hover, .feature-card:hover, .review-card:hover {
     transform: translateY(-5px);
     box-shadow: 
         0 0 10px #ffffff,
@@ -430,30 +431,37 @@ body::after {
     margin-top: auto;
 }
 
-.pricing-card.popular {
+/* ============================================
+   СПЕЦИАЛЬНЫЕ СТИЛИ ДЛЯ ТАРИФОВ (КОМПАКТНЫЕ + VIP)
+   ============================================ */
+
+.pricing-card {
+    /* Компактный размер */
+    padding: 15px 20px !important; 
     border: none !important;
-    box-shadow: 
-        0 0 5px #ffffff,
-        0 0 15px #FFD700,
-        0 0 30px rgba(255, 215, 0, 0.4),
-        inset 0 0 10px #ffffff,
-        inset 0 0 20px rgba(255, 215, 0, 0.3) !important;
+    /* Базовый фон (для бесплатного) */
+    background: rgba(11, 12, 21, 0.9);
 }
 
-.pricing-card.popular:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-        0 0 10px #ffffff,
-        0 0 25px #FFD700,
-        0 0 50px rgba(255, 215, 0, 0.6),
-        inset 0 0 15px #ffffff,
-        inset 0 0 30px rgba(255, 215, 0, 0.5) !important;
+/* Заголовки в тарифах */
+.pricing-title {
+    font-size: 22px !important;
+    margin-bottom: 8px;
+    font-family: var(--font-cinzel);
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
+/* Цена */
 .pricing-price {
-    font-size: 42px !important;
+    font-size: 38px !important; /* Уменьшили цену */
     color: var(--color-gold-400);
-    margin: 10px 0 5px;
+    margin: 5px 0;
     font-family: var(--font-cinzel);
     font-weight: 900;
     text-align: center;
@@ -462,25 +470,30 @@ body::after {
 
 .pricing-period {
     color: #ccc;
-    font-size: 14px;
-    margin-bottom: 20px;
+    font-size: 13px;
+    margin-bottom: 15px;
     text-align: center;
 }
 
+/* Список преимуществ */
 .pricing-features {
     list-style: none;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     text-align: left;
     flex-grow: 1;
 }
 
 .pricing-features li {
-    padding: 6px 0;
+    padding: 5px 0;
     border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: 14px;
+    font-size: 13px; /* Уменьшили шрифт списка */
     color: #eee;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
+/* Бейджик "Лучший выбор" */
 .popular-badge {
     position: absolute;
     top: -12px;
@@ -488,15 +501,48 @@ body::after {
     transform: translateX(-50%);
     background: linear-gradient(135deg, #ff4e00, #ec9f05);
     color: #fff;
-    padding: 6px 16px;
+    padding: 5px 14px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
     box-shadow: 0 0 15px rgba(255, 78, 0, 0.6);
     white-space: nowrap;
     z-index: 2;
+}
+
+/* === ОСОБЫЙ СТИЛЬ ДЛЯ VIP КАРТОЧКИ === */
+.pricing-card.popular {
+    /* ДОРОГОЙ ЗОЛОТОЙ ФОН */
+    background: linear-gradient(145deg, rgba(20, 20, 30, 0.95), rgba(40, 30, 10, 0.95)) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    
+    /* ОДИНАКОВЫЙ НЕОН (как у бесплатного) */
+    box-shadow: 
+        0 0 5px #ffffff,
+        0 0 15px var(--color-neon-blue),
+        0 0 30px rgba(0, 210, 255, 0.4),
+        inset 0 0 10px #ffffff,
+        inset 0 0 20px rgba(0, 210, 255, 0.3) !important;
+}
+
+/* При наведении на любую карточку тарифа */
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 0 10px #ffffff,
+        0 0 25px var(--color-neon-blue),
+        0 0 50px rgba(0, 210, 255, 0.6),
+        inset 0 0 15px #ffffff,
+        inset 0 0 30px rgba(0, 210, 255, 0.5);
+}
+
+.pricing-card .btn {
+    width: 100%;
+    margin-top: auto;
+    font-size: 16px;
+    padding: 14px 20px;
 }
 
 /* FAQ */
@@ -662,5 +708,12 @@ body::after {
     .btn-lg {
         width: 100%;
         padding: 18px 36px;
+    }
+    
+    .pricing-grid {
+        grid-template-columns: 1fr; /* Одна колонка на мобильном */
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
