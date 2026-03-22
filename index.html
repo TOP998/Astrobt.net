@@ -652,6 +652,37 @@
             updateTimer();
             setInterval(updateTimer, 1000);
         }
+            // ... ваш код таймера выше ...
+    } // Это конец функции updateTimer или блока таймера
+
+    // === ВСТАВЬТЕ ЭТОТ КОД ДЛЯ МЕНЮ СЮДА ===
+    
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('active');
+            this.classList.toggle('open');
+        });
+        
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('open');
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('open');
+            }
+        });
+    }
+
+
     </script>
 </body>
 </html>
