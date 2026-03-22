@@ -1,6 +1,6 @@
 /* ============================================
    ASTRO-PREMIUM LANDING PAGE STYLES
-   ВЕРСИЯ: СУПЕР КОМПАКТНЫЕ (-45%), ЦЕНТРАЛЬНЫЙ БЕЙДЖ
+   ВЕРСИЯ: УЗКИЕ КАРТОЧКИ ТАРИФОВ (-30% ШИРИНЫ)
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
@@ -381,19 +381,26 @@ body::after {
 }
 
 /* ============================================
-   ТАРИФЫ (СУПЕР КОМПАКТНЫЕ - МИНУС 45%)
+   ТАРИФЫ (УЗКИЕ - МИНУС 30% ШИРИНЫ)
    ============================================ */
 
 .pricing-card {
-    /* Очень компактные отступы */
+    /* Ограничиваем ширину карточки (было ~500px, стало ~340px) */
+    max-width: 340px !important; 
+    width: 100%; /* Чтобы на мобильных занимала всю доступную ширину */
+    
     padding: 12px 15px !important; 
     border: none !important;
     background: rgba(11, 12, 21, 0.95) !important;
+    
+    /* Центрируем саму карточку в сетке */
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Заголовок (ЛЕВЫЙ УГОЛ + КОРОНА) */
+/* Заголовок */
 .pricing-title {
-    font-size: 18px !important; /* Еще меньше */
+    font-size: 18px !important;
     margin-bottom: 6px;
     font-family: var(--font-cinzel);
     font-weight: 700;
@@ -404,7 +411,7 @@ body::after {
     gap: 8px;
 }
 
-/* Одна корона через CSS */
+/* Корона */
 .pricing-card.popular .pricing-title::before {
     content: '👑'; 
     font-size: 22px;
@@ -414,7 +421,7 @@ body::after {
 
 /* Цена */
 .pricing-price {
-    font-size: 28px !important; /* Значительно меньше */
+    font-size: 28px !important;
     color: var(--color-gold-400);
     margin: 2px 0;
     font-family: var(--font-cinzel);
@@ -425,7 +432,7 @@ body::after {
 
 .pricing-period {
     color: #ccc;
-    font-size: 11px; /* Маленький шрифт */
+    font-size: 11px;
     margin-bottom: 12px;
     text-align: left;
 }
@@ -439,21 +446,21 @@ body::after {
 }
 
 .pricing-features li {
-    padding: 4px 0; /* Минимальные отступы между строками */
+    padding: 4px 0;
     border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: 12px; /* Маленький текст списка */
+    font-size: 12px;
     color: #eee;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-/* Бейджик "Лучший выбор" — ВОЗВРАЩАЕМ ПО ЦЕНТРУ */
+/* Бейджик "Лучший выбор" — ПО ЦЕНТРУ */
 .popular-badge {
     position: absolute;
     top: -12px;
-    left: 50%; /* Центрируем по горизонтали */
-    transform: translateX(-50%); /* Сдвигаем на половину ширины */
+    left: 50%;
+    transform: translateX(-50%);
     right: auto;
     background: linear-gradient(135deg, #ff4e00, #ec9f05);
     color: #fff;
@@ -468,7 +475,7 @@ body::after {
     z-index: 2;
 }
 
-/* НАВЕДЕНИЕ (ЯРКАЯ ВСПЫШКА) */
+/* НАВЕДЕНИЕ */
 .pricing-card:hover {
     transform: translateY(-5px);
     box-shadow: 
@@ -624,5 +631,15 @@ body::after {
     .hero-title { font-size: 36px; }
     .section-title { font-size: 32px; }
     .btn-lg { width: 100%; padding: 18px 36px; }
-    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+    
+    /* На мобильном убираем ограничение ширины, чтобы было удобно */
+    .pricing-grid { 
+        grid-template-columns: 1fr; 
+        max-width: 100%; 
+        margin-left: auto; 
+        margin-right: auto; 
+    }
+    .pricing-card {
+        max-width: 100% !important;
+    }
 }
