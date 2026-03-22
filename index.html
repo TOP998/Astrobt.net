@@ -11,6 +11,45 @@
     <link rel="apple-touch-icon" href="images/favicon.png">
     
     <link rel="stylesheet" href="css/style.css" />
+        <style>
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+        }
+        .modal-card {
+            display: none;
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            background: #1a1a2e;
+            border: 1px solid #4b3f72;
+            border-radius: 12px;
+            padding: 25px;
+            z-index: 10000;
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .modal-close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+            color: #aaa;
+            margin-top: -10px;
+        }
+        .modal-close:hover { color: #fff; }
+        .modal-title { text-align: center; color: #ffd700; margin-bottom: 20px; }
+        .modal-body { font-size: 14px; line-height: 1.5; text-align: left; }
+        .modal-body p { margin-bottom: 10px; }
+        .modal-body h3 { color: #d4af37; font-size: 16px; margin-top: 15px; }
+    </style>
 </head>
 <body>
     
@@ -467,6 +506,49 @@
 
             updateTimer(); // Запустить сразу
             setInterval(updateTimer, 1000); // Обновлять каждую секунду
+        });
+    </script>
+        <!-- Окно Политики -->
+    <div class="modal-overlay" id="overlayPrivacy"></div>
+    <div class="modal-card" id="cardPrivacy">
+        <span class="modal-close" onclick="closeModal('Privacy')">&times;</span>
+        <h2 class="modal-title">📜 Политика конфиденциальности</h2>
+        <div class="modal-body">
+            <p><strong>1. Общие положения</strong><br>Мы ценим вашу приватность.</p>
+            <p><strong>2. Данные</strong><br>Дата рождения, ID Telegram. Не передаем третьим лицам.</p>
+            <p><strong>3. Контакты</strong><br>Пишите в поддержку бота.</p>
+        </div>
+    </div>
+
+    <!-- Окно Оферты -->
+    <div class="modal-overlay" id="overlayOffer"></div>
+    <div class="modal-card" id="cardOffer">
+        <span class="modal-close" onclick="closeModal('Offer')">&times;</span>
+        <h2 class="modal-title">📄 Публичная оферта</h2>
+        <div class="modal-body">
+            <p><strong>1. Предмет</strong><br>Доступ к астрологическому боту. Услуга развлекательная.</p>
+            <p><strong>2. Оплата</strong><br>Через Telegram Stars или Tribute. Без автопродления.</p>
+            <p><strong>3. Исполнитель</strong><br>Astrobot.</p>
+        </div>
+    </div>
+        <script>
+        function openModal(name) {
+            document.getElementById('overlay' + name).style.display = 'block';
+            document.getElementById('card' + name).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(name) {
+            document.getElementById('overlay' + name).style.display = 'none';
+            document.getElementById('card' + name).style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnP = document.getElementById('btnPrivacy');
+            const btnO = document.getElementById('btnOffer');
+            if(btnP) btnP.onclick = (e) => { e.preventDefault(); openModal('Privacy'); };
+            if(btnO) btnO.onclick = (e) => { e.preventDefault(); openModal('Offer'); };
+            document.getElementById('overlayPrivacy').onclick = () => closeModal('Privacy');
+            document.getElementById('overlayOffer').onclick = () => closeModal('Offer');
         });
     </script>
 </body>
