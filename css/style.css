@@ -1,6 +1,6 @@
 /* ============================================
    ASTRO-PREMIUM LANDING PAGE STYLES
-   ФИНАЛЬНАЯ ВЕРСИЯ: КОМПАКТНЫЕ ТАРИФЫ (-20%), 1 КОРОНА, ЧЕРНЫЙ ФОН
+   ВЕРСИЯ: СУПЕР КОМПАКТНЫЕ (-45%), ЦЕНТРАЛЬНЫЙ БЕЙДЖ
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
@@ -381,42 +381,42 @@ body::after {
 }
 
 /* ============================================
-   ТАРИФЫ (КОМПАКТНЫЕ - МИНУС 20%)
+   ТАРИФЫ (СУПЕР КОМПАКТНЫЕ - МИНУС 45%)
    ============================================ */
 
 .pricing-card {
-    /* Уменьшили общие отступы */
-    padding: 16px !important; 
+    /* Очень компактные отступы */
+    padding: 12px 15px !important; 
     border: none !important;
     background: rgba(11, 12, 21, 0.95) !important;
 }
 
-/* Заголовок (ЛЕВЫЙ УГОЛ + ОДНА КОРОНА) */
+/* Заголовок (ЛЕВЫЙ УГОЛ + КОРОНА) */
 .pricing-title {
-    font-size: 20px !important; /* Было 24px, стало 20px */
-    margin-bottom: 8px;
+    font-size: 18px !important; /* Еще меньше */
+    margin-bottom: 6px;
     font-family: var(--font-cinzel);
     font-weight: 700;
     color: #fff;
     text-align: left;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
-/* Добавляем ТОЛЬКО ОДНУ корону через CSS */
+/* Одна корона через CSS */
 .pricing-card.popular .pricing-title::before {
     content: '👑'; 
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1;
     filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
 }
 
 /* Цена */
 .pricing-price {
-    font-size: 32px !important; /* Было 40px, стало 32px */
+    font-size: 28px !important; /* Значительно меньше */
     color: var(--color-gold-400);
-    margin: 4px 0;
+    margin: 2px 0;
     font-family: var(--font-cinzel);
     font-weight: 900;
     text-align: left;
@@ -425,41 +425,41 @@ body::after {
 
 .pricing-period {
     color: #ccc;
-    font-size: 12px; /* Было 14px, стало 12px */
-    margin-bottom: 16px;
+    font-size: 11px; /* Маленький шрифт */
+    margin-bottom: 12px;
     text-align: left;
 }
 
 /* Список преимуществ */
 .pricing-features {
     list-style: none;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: left;
     flex-grow: 1;
 }
 
 .pricing-features li {
-    padding: 5px 0;
+    padding: 4px 0; /* Минимальные отступы между строками */
     border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: 13px; /* Было 14px, стало 13px */
+    font-size: 12px; /* Маленький текст списка */
     color: #eee;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
-/* Бейджик "Лучший выбор" */
+/* Бейджик "Лучший выбор" — ВОЗВРАЩАЕМ ПО ЦЕНТРУ */
 .popular-badge {
     position: absolute;
     top: -12px;
-    right: 20px;
-    left: auto;
-    transform: none;
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Сдвигаем на половину ширины */
+    right: auto;
     background: linear-gradient(135deg, #ff4e00, #ec9f05);
     color: #fff;
     padding: 4px 12px;
     border-radius: 20px;
-    font-size: 10px; /* Было 11px */
+    font-size: 10px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -482,8 +482,8 @@ body::after {
 .pricing-card .btn {
     width: 100%;
     margin-top: auto;
-    font-size: 15px;
-    padding: 12px 20px;
+    font-size: 14px;
+    padding: 10px 15px;
 }
 
 /* FAQ */
