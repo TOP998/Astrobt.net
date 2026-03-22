@@ -1,6 +1,6 @@
 /* ============================================
    ASTRO-PREMIUM LANDING PAGE STYLES
-   ВЕРСИЯ С ЯРКИМ ФОНОМ
+   ВЕРСИЯ С ЗАТЕМНЕНИЕМ 40%
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
@@ -30,7 +30,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* === ГЛАВНЫЙ ФОН (BODY) — ТЕПЕРЬ ЯРЧЕ === */
+/* === ГЛАВНЫЙ ФОН (BODY) === */
 body {
     font-family: var(--font-body);
     background-color: #050508;
@@ -48,7 +48,7 @@ body {
     position: relative;
 }
 
-/* Затемнение поверх фона — УМЕНЬШЕНО ДО 25% */
+/* Затемнение поверх фона — УСТАНОВЛЕНО 40% */
 body::after {
     content: '';
     position: fixed;
@@ -56,7 +56,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.25); /* Было 0.6, стало 0.25 */
+    background: rgba(0, 0, 0, 0.4); /* Изменено с 0.25 на 0.4 */
     z-index: -1;
     pointer-events: none;
 }
@@ -287,12 +287,12 @@ body::after {
 
 .hero-subtitle {
     font-size: 20px;
-    color: #fff; /* Сделал текст чуть ярче */
+    color: #fff;
     margin-bottom: 48px;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Тень для читаемости */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
 .hero-buttons {
@@ -361,7 +361,7 @@ body::after {
    ЕДИНЫЙ СТИЛЬ ДЛЯ ВСЕХ КАРТОЧЕК (НЕОН)
    ============================================ */
 .problem-card, .feature-card, .review-card, .pricing-card {
-    background: rgba(11, 12, 21, 0.85); /* Чуть прозрачнее, чтобы фон пробивался */
+    background: rgba(11, 12, 21, 0.85);
     backdrop-filter: blur(10px);
     
     border: none !important;
@@ -431,36 +431,73 @@ body::after {
 }
 
 .pricing-card.popular {
-    border: 2px solid var(--color-gold-500) !important;
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4) !important;
+    border: none !important;
+    box-shadow: 
+        0 0 5px #ffffff,
+        0 0 15px #FFD700,
+        0 0 30px rgba(255, 215, 0, 0.4),
+        inset 0 0 10px #ffffff,
+        inset 0 0 20px rgba(255, 215, 0, 0.3) !important;
+}
+
+.pricing-card.popular:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 0 10px #ffffff,
+        0 0 25px #FFD700,
+        0 0 50px rgba(255, 215, 0, 0.6),
+        inset 0 0 15px #ffffff,
+        inset 0 0 30px rgba(255, 215, 0, 0.5) !important;
 }
 
 .pricing-price {
-    font-size: 36px !important;
+    font-size: 42px !important;
     color: var(--color-gold-400);
-    margin: 10px 0;
+    margin: 10px 0 5px;
     font-family: var(--font-cinzel);
     font-weight: 900;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 .pricing-period {
     color: #ccc;
+    font-size: 14px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .pricing-features {
     list-style: none;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-align: left;
+    flex-grow: 1;
 }
 
 .pricing-features li {
-    padding: 8px 0;
+    padding: 6px 0;
     border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 14px;
+    color: #eee;
 }
 
-.feature-included { color: #fff; }
-.feature-excluded { color: var(--color-gray-400); text-decoration: line-through; opacity: 0.6; }
+.popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff4e00, #ec9f05);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(255, 78, 0, 0.6);
+    white-space: nowrap;
+    z-index: 2;
+}
 
 /* FAQ */
 .faq-item {
@@ -509,7 +546,7 @@ body::after {
 
 /* Footer */
 .footer {
-    background: rgba(0,0,0,0.6); /* Фон футера тоже сделал прозрачнее */
+    background: rgba(0,0,0,0.6);
     padding: 60px 20px 20px;
     border-top: 1px solid rgba(255,255,255,0.1);
     position: relative;
