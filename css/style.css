@@ -1,6 +1,6 @@
 /* ============================================
    ASTRO-PREMIUM LANDING PAGE STYLES
-   ФИНАЛЬНАЯ ВЕРСИЯ (КОМПАКТНЫЕ ТАРИФЫ + VIP КОРОНА)
+   ИСПРАВЛЕНИЯ: КОРОНА, ЛЕВЫЙ УГОЛ, ЧЕРНЫЙ ФОН, НАВЕДЕНИЕ
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
@@ -30,17 +30,15 @@ html {
     scroll-behavior: smooth;
 }
 
-/* === ГЛАВНЫЙ ФОН (BODY) === */
+/* === ГЛАВНЫЙ ФОН === */
 body {
     font-family: var(--font-body);
     background-color: #050508;
     background-image: url('../images/galaktikafon.jpg');
-    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    
     color: var(--color-white);
     line-height: 1.6;
     overflow-x: hidden;
@@ -48,7 +46,6 @@ body {
     position: relative;
 }
 
-/* Затемнение фона 40% */
 body::after {
     content: '';
     position: fixed;
@@ -61,7 +58,6 @@ body::after {
     pointer-events: none;
 }
 
-/* === ЗВЕЗДНЫЙ ФОН === */
 .stars-bg {
     position: fixed;
     top: 0;
@@ -90,7 +86,6 @@ body::after {
 /* ============================================
    КНОПКИ
    ============================================ */
-
 .btn {
     display: inline-block;
     padding: 18px 40px;
@@ -122,10 +117,7 @@ body::after {
     background: transparent;
     border: 2px solid #ffffff;
     color: #ffffff;
-    box-shadow: 
-        0 0 5px #ffffff,
-        0 0 10px rgba(255, 255, 255, 0.5),
-        inset 0 0 5px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 5px #ffffff, 0 0 10px rgba(255, 255, 255, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.2);
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
 }
@@ -133,21 +125,8 @@ body::after {
 .btn-secondary:hover {
     transform: translateY(-2px);
     background: rgba(255, 255, 255, 0.05);
-    box-shadow: 
-        0 0 10px #ffffff,
-        0 0 20px #ffffff,
-        0 0 40px rgba(176, 38, 255, 0.6),
-        inset 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px rgba(176, 38, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.5);
     text-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255, 255, 255, 0.8);
-}
-
-.btn-secondary:active {
-    transform: translateY(1px);
-    box-shadow: 
-        0 0 15px #ffffff,
-        0 0 30px #ffffff,
-        0 0 60px rgba(176, 38, 255, 0.8),
-        inset 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
 .btn-lg {
@@ -155,13 +134,7 @@ body::after {
     font-size: 18px;
 }
 
-.btn-block {
-    display: block;
-    width: 100%;
-    text-align: center;
-}
-
-/* Container */
+/* Container & Header */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -170,7 +143,6 @@ body::after {
     z-index: 2;
 }
 
-/* Header */
 .header {
     position: fixed;
     top: 0;
@@ -203,11 +175,7 @@ body::after {
     gap: 12px;
 }
 
-.logo-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-}
+.logo-icon { width: 40px; height: 40px; border-radius: 10px; }
 
 .logo-text {
     font-family: var(--font-cinzel);
@@ -217,20 +185,9 @@ body::after {
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
-.nav {
-    display: flex;
-    gap: 32px;
-}
-
-.nav a {
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.nav a:hover {
-    color: var(--color-gold-400);
-}
+.nav { display: flex; gap: 32px; }
+.nav a { color: #ffffff; text-decoration: none; transition: color 0.3s; }
+.nav a:hover { color: var(--color-gold-400); }
 
 .mobile-menu-btn {
     display: none;
@@ -241,7 +198,6 @@ body::after {
     cursor: pointer;
     padding: 5px;
 }
-
 .mobile-menu-btn span {
     width: 25px;
     height: 3px;
@@ -319,10 +275,7 @@ body::after {
     color: var(--color-gold-400);
 }
 
-.stat-label {
-    font-size: 14px;
-    color: #ddd;
-}
+.stat-label { font-size: 14px; color: #ddd; }
 
 .trust-badge {
     background: rgba(0, 0, 0, 0.5);
@@ -358,15 +311,12 @@ body::after {
 }
 
 /* ============================================
-   ОБЩИЕ СТИЛИ КАРТОЧЕК (НЕОН)
+   ОБЩИЕ СТИЛИ КАРТОЧЕК
    ============================================ */
 .problem-card, .feature-card, .review-card, .pricing-card {
     background: rgba(11, 12, 21, 0.85);
     backdrop-filter: blur(10px);
-    
     border: none !important;
-    outline: none !important;
-    
     border-radius: 16px;
     padding: 24px !important;
     transition: all 0.3s ease;
@@ -375,7 +325,6 @@ body::after {
     display: flex;
     flex-direction: column;
     
-    /* БЕЛО-ГОЛУБОЙ НЕОН */
     box-shadow: 
         0 0 5px #ffffff,
         0 0 15px var(--color-neon-blue),
@@ -432,61 +381,68 @@ body::after {
 }
 
 /* ============================================
-   СПЕЦИАЛЬНЫЕ СТИЛИ ДЛЯ ТАРИФОВ (КОМПАКТНЫЕ + VIP)
+   ТАРИФЫ (ИСПРАВЛЕННЫЕ)
    ============================================ */
 
 .pricing-card {
     /* Компактный размер */
-    padding: 15px 20px !important; 
+    padding: 20px !important;
     border: none !important;
-    /* Базовый фон (для бесплатного) */
-    background: rgba(11, 12, 21, 0.9);
+    /* ЧЕРНЫЙ ФОН ДЛЯ ВСЕХ */
+    background: rgba(11, 12, 21, 0.95) !important;
 }
 
-/* Заголовки в тарифах */
+/* Заголовок тарифа (ЛЕВЫЙ УГОЛ + КОРОНА) */
 .pricing-title {
-    font-size: 22px !important;
-    margin-bottom: 8px;
+    font-size: 24px !important;
+    margin-bottom: 10px;
     font-family: var(--font-cinzel);
     font-weight: 700;
     color: #fff;
-    text-align: center;
+    text-align: left; /* Выравнивание слева */
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
+    gap: 10px;
+}
+
+/* ДОБАВЛЯЕМ КОРОНУ ЧЕРЕЗ CSS */
+.pricing-card.popular .pricing-title::before {
+    content: '👑'; /* Эмодзи короны */
+    font-size: 28px;
+    line-height: 1;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
 }
 
 /* Цена */
 .pricing-price {
-    font-size: 38px !important; /* Уменьшили цену */
+    font-size: 40px !important;
     color: var(--color-gold-400);
     margin: 5px 0;
     font-family: var(--font-cinzel);
     font-weight: 900;
-    text-align: center;
+    text-align: left; /* Цена тоже слева */
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 .pricing-period {
     color: #ccc;
-    font-size: 13px;
-    margin-bottom: 15px;
-    text-align: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: left; /* Период слева */
 }
 
 /* Список преимуществ */
 .pricing-features {
     list-style: none;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: left;
     flex-grow: 1;
 }
 
 .pricing-features li {
-    padding: 5px 0;
+    padding: 6px 0;
     border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: 13px; /* Уменьшили шрифт списка */
+    font-size: 14px;
     color: #eee;
     display: flex;
     align-items: center;
@@ -497,8 +453,9 @@ body::after {
 .popular-badge {
     position: absolute;
     top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 20px; /* Сдвигаем вправо, чтобы не мешал заголовку */
+    left: auto;
+    transform: none;
     background: linear-gradient(135deg, #ff4e00, #ec9f05);
     color: #fff;
     padding: 5px 14px;
@@ -512,30 +469,16 @@ body::after {
     z-index: 2;
 }
 
-/* === ОСОБЫЙ СТИЛЬ ДЛЯ VIP КАРТОЧКИ === */
-.pricing-card.popular {
-    /* ДОРОГОЙ ЗОЛОТОЙ ФОН */
-    background: linear-gradient(145deg, rgba(20, 20, 30, 0.95), rgba(40, 30, 10, 0.95)) !important;
-    border: 1px solid rgba(212, 175, 55, 0.3) !important;
-    
-    /* ОДИНАКОВЫЙ НЕОН (как у бесплатного) */
-    box-shadow: 
-        0 0 5px #ffffff,
-        0 0 15px var(--color-neon-blue),
-        0 0 30px rgba(0, 210, 255, 0.4),
-        inset 0 0 10px #ffffff,
-        inset 0 0 20px rgba(0, 210, 255, 0.3) !important;
-}
-
-/* При наведении на любую карточку тарифа */
+/* НАВЕДЕНИЕ НА ЛЮБУЮ КАРТОЧКУ ТАРИФА (ЯРКАЯ ВСПЫШКА) */
 .pricing-card:hover {
     transform: translateY(-5px);
+    /* Одинаково яркое свечение для обеих */
     box-shadow: 
-        0 0 10px #ffffff,
-        0 0 25px var(--color-neon-blue),
-        0 0 50px rgba(0, 210, 255, 0.6),
-        inset 0 0 15px #ffffff,
-        inset 0 0 30px rgba(0, 210, 255, 0.5);
+        0 0 15px #ffffff,
+        0 0 30px var(--color-neon-blue),
+        0 0 60px rgba(0, 210, 255, 0.7),
+        inset 0 0 20px #ffffff,
+        inset 0 0 40px rgba(0, 210, 255, 0.6) !important;
 }
 
 .pricing-card .btn {
@@ -641,16 +584,8 @@ body::after {
     padding: 80px 40px;
 }
 
-.mobile-menu.active {
-    right: 0;
-}
-
-.mobile-menu nav {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
+.mobile-menu.active { right: 0; }
+.mobile-menu nav { display: flex; flex-direction: column; gap: 24px; }
 .mobile-menu a {
     color: #fff;
     text-decoration: none;
@@ -685,35 +620,11 @@ body::after {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .nav, .header-btn, .lang-switcher {
-        display: none;
-    }
-    
-    .mobile-menu-btn {
-        display: flex;
-    }
-    
-    .hero {
-        padding: 140px 20px 80px;
-    }
-    
-    .hero-title {
-        font-size: 36px;
-    }
-    
-    .section-title {
-        font-size: 32px;
-    }
-    
-    .btn-lg {
-        width: 100%;
-        padding: 18px 36px;
-    }
-    
-    .pricing-grid {
-        grid-template-columns: 1fr; /* Одна колонка на мобильном */
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    .nav, .header-btn, .lang-switcher { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .hero { padding: 140px 20px 80px; }
+    .hero-title { font-size: 36px; }
+    .section-title { font-size: 32px; }
+    .btn-lg { width: 100%; padding: 18px 36px; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
 }
