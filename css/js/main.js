@@ -1,17 +1,18 @@
+// === ТОЧКА ВХОДА ===
 document.addEventListener('DOMContentLoaded', function() {
     createStars();
     initMobileMenu();
     initSmoothScroll();
     initCounters();
     initHeaderScroll();
+    initTimer(); // <--- 1. ДОБАВИТЬ ВЫЗОВ ЭТОЙ ФУНКЦИИ
 });
 
-// === СОЗДАНИЕ ЗВЕЗД (ОДИН РАЗ) ===
+// === СОЗДАНИЕ ЗВЕЗД ===
 function createStars() {
     const starsBg = document.getElementById('starsBg');
     if (!starsBg) return;
     
-    // Очищаем, если там что-то было, чтобы не дублировать
     starsBg.innerHTML = ''; 
 
     for (let i = 0; i < 100; i++) {
@@ -27,27 +28,19 @@ function createStars() {
     }
 }
 
-// === МЕНЮ (ИСПРАВЛЕННОЕ) ===
+// === МЕНЮ ===
 function initMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     
-    // Проверка: существуют ли элементы
-    if (!mobileMenuBtn || !mobileMenu) {
-        console.error('Элементы меню не найдены! Проверьте ID в HTML.');
-        return;
-    }
+    if (!mobileMenuBtn || !mobileMenu) return;
     
-    // Клик по гамбургеру
     mobileMenuBtn.addEventListener('click', function(e) {
-        e.stopPropagation(); // Чтобы клик не ушел дальше
+        e.stopPropagation();
         mobileMenu.classList.toggle('active');
-        
-        // Для красоты можно менять цвет кнопок при открытии
         this.classList.toggle('open');
     });
     
-    // Закрытие при клике на ссылку внутри меню
     mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', function() {
             mobileMenu.classList.remove('active');
@@ -55,7 +48,6 @@ function initMobileMenu() {
         });
     });
 
-    // Закрытие при клике вне меню
     document.addEventListener('click', function(e) {
         if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
             mobileMenu.classList.remove('active');
@@ -69,13 +61,12 @@ function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href === '#') return;
+            if (href === '#') return; // Игнорируем пустые ссылки
             
             e.preventDefault();
             const target = document.querySelector(href);
             
             if (target) {
-                // Учитываем высоту фиксированной шапки
                 const headerOffset = 80;
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -85,7 +76,6 @@ function initSmoothScroll() {
                     behavior: "smooth"
                 });
                 
-                // Закрываем мобильное меню если открыто
                 const mobileMenu = document.getElementById('mobileMenu');
                 if(mobileMenu) mobileMenu.classList.remove('active');
             }
@@ -140,4 +130,48 @@ function initHeaderScroll() {
             header.classList.remove('scrolled');
         }
     });
+}
+
+// === ТАЙМЕР (НОВАЯ ФУНКЦИЯ) ===
+function initTimer() {
+    const timerElement = document.getElementById('ctaTimer');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+
+    // Если элементов нет на странице, выходим
+    if (!timerElement || !hoursEl || !minutesEl || !secondsEl) return;
+
+    let endTime = localStorage.getItem('astroTimerEnd');
+    const now = Date.now();
+
+    // Если таймер истек или его нет — создаем новый на 1 час
+    if (!endTime || now > parseInt(endTime)) {
+        endTime = now + (60 * 60 * 1000); // 1 час в миллисекундах
+        localStorage.setItem('astroTimerEnd', endTime.toString());
+        console.log("🕒 Таймер сброшен и запущен заново!");
+    }
+
+    function updateTimer() {
+        const currentTime = Date.now();
+        const distance = parseInt(endTime) - currentTime;
+
+        // Если время вышло — перезапускаем
+        if (distance < 0) {
+            const newEndTime = currentTime + (60 * 60 * 1000);
+            localStorage.setItem('astroTimerEnd', newEndTime.toString());
+            return; 
+        }
+
+        const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+        hoursEl.textContent = h.toString().padStart(2, '0');
+        minutesEl.textContent = m.toString().padStart(2, '0');
+        secondsEl.textContent = s.toString().padStart(2, '0');
+    }
+
+    updateTimer(); // Запустить сразу
+    setInterval(updateTimer, 1000); // Обновлять каждую секунду
 }
