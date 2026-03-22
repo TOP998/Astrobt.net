@@ -57,7 +57,6 @@
 </head>
 <body>
     
-    
     <div class="stars-bg" id="starsBg"></div>
     
     <!-- Header -->
@@ -309,7 +308,7 @@
                 </div>
                 <div class="pricing-card popular">
                     <div class="popular-badge">🔥 Лучший выбор</div>
-                    <h3 class="pricing-title">VIP</h3>
+                    <h3 class="pricing-title">👑 VIP</h3>
                     <div class="pricing-price">290₽</div>
                     <div class="pricing-period">в месяц</div>
                     <ul class="pricing-features">
@@ -448,8 +447,8 @@
                 <p>&copy; 2023 Astrobot. Все права защищены.</p>
                 <div class="footer-legal">
                     <!-- Кнопки с правильными ID -->
-                    <a href="privacy.html" id="btnPrivacy">Политика конфиденциальности</a>
-                    <a href="offer.html" id="btnOffer">Публичная оферта</a>
+                    <a href="#" id="btnPrivacy">Политика конфиденциальности</a>
+                    <a href="#" id="btnOffer">Публичная оферта</a>
                 </div>
             </div>
         </div>
@@ -466,7 +465,7 @@
         </nav>
     </div>
 
-    <!-- ================= МОДАЛЬНЫЕ ОКНА (ВСТАВЛЕНЫ ПРАВИЛЬНО) ================= -->
+    <!-- ================= МОДАЛЬНЫЕ ОКНА ================= -->
 
     <!-- 1. Окно Политики конфиденциальности -->
     <div class="modal-overlay" id="overlayPrivacy"></div>
@@ -521,7 +520,7 @@
             Администрация сайта вправе в любое время вносить изменения в настоящую Политику конфиденциальности. Актуальная версия политики всегда размещается на данной странице.</p>
 
             <p><strong>10. Контакты</strong><br>
-            По всем вопросам, связанным с работой сайта и настоящей Политикой конфиденциальности, можно обратиться по адресу: <a href="mailto:ПОДДЕРЖКА">Поддержка</a></p>
+            По всем вопросам, связанным с работой сайта и настоящей Политикой конфиденциальности, можно обратиться по адресу: <a href="mailto:@Kosmolive">@Kosmolive</a></p>
             
             <p style="font-size: 12px; color: #888; margin-top: 20px; border-top: 1px solid #333; padding-top: 10px;">
                 Дата последнего обновления: <span id="currentDate"></span>
@@ -545,9 +544,9 @@
             1.3. Договор считается заключённым с момента оплаты.</p>
 
             <p><strong>2. Сведения об Исполнителе</strong><br>
-            Исполнитель: <strong>Astrobot</strong><br>
-            Статус: AI<br>
-            Email для связи: <a href="mailto:-">-</a></p>
+            Исполнитель: <strong>Astrobot Team</strong><br>
+            Статус: Физическое лицо<br>
+            Email для связи: <a href="mailto:@Kosmolive">@Kosmolive</a></p>
 
             <p><strong>3. Предмет договора</strong><br>
             3.1. Исполнитель предоставляет доступ к информационно-развлекательному сервису (натальные карты, совместимость, прогнозы, VIP-доступ).<br>
@@ -585,6 +584,7 @@
         </div>
     </div>
 
+    <!-- Подключение внешнего JS файла (Звезды, Меню, Скролл) -->
     <script src="js/main.js"></script>
     
     <!-- СКРИПТЫ ДЛЯ ТАЙМЕРА И МОДАЛЬНЫХ ОКОН -->
@@ -619,70 +619,45 @@
                 const today = new Date();
                 dateSpan.textContent = today.toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' });
             }
-        });
-
-        // === ЛОГИКА ТАЙМЕРА ===
-        const timerElement = document.getElementById('ctaTimer');
-        if (timerElement) {
-            let endTime = localStorage.getItem('astroTimerEnd');
-            if (!endTime || new Date().getTime() > endTime) {
-                endTime = new Date().getTime() + (60 * 60 * 1000); 
-                localStorage.setItem('astroTimerEnd', endTime);
-            }
-
-            const hoursEl = document.getElementById('hours');
-            const minutesEl = document.getElementById('minutes');
-            const secondsEl = document.getElementById('seconds');
-
-            function updateTimer() {
+            
+            // === ЗАПУСК ТАЙМЕРА (ЕСЛИ ОН НЕ ЗАПУСТИЛСЯ ЧЕРЕЗ main.js) ===
+            const timerElement = document.getElementById('ctaTimer');
+            if (timerElement) {
+                let endTime = localStorage.getItem('astroTimerEnd');
                 const now = new Date().getTime();
-                const distance = endTime - now;
-                if (distance < 0) {
-                    endTime = new Date().getTime() + (60 * 60 * 1000);
+                
+                // Сброс если истек
+                if (!endTime || now > endTime) {
+                    endTime = now + (60 * 60 * 1000); 
                     localStorage.setItem('astroTimerEnd', endTime);
                 }
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
-                if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
-                if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
-            }
-            updateTimer();
-            setInterval(updateTimer, 1000);
-        }
-            // ... ваш код таймера выше ...
-    } // Это конец функции updateTimer или блока таймера
+                const hoursEl = document.getElementById('hours');
+                const minutesEl = document.getElementById('minutes');
+                const secondsEl = document.getElementById('seconds');
 
-    // === ВСТАВЬТЕ ЭТОТ КОД ДЛЯ МЕНЮ СЮДА ===
-    
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            mobileMenu.classList.toggle('active');
-            this.classList.toggle('open');
-        });
-        
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-                mobileMenuBtn.classList.remove('open');
-            });
-        });
+                function updateTimer() {
+                    const currentTime = new Date().getTime();
+                    const distance = endTime - currentTime;
+                    
+                    if (distance < 0) {
+                         endTime = currentTime + (60 * 60 * 1000);
+                         localStorage.setItem('astroTimerEnd', endTime);
+                         return;
+                    }
 
-        document.addEventListener('click', function(e) {
-            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                mobileMenu.classList.remove('active');
-                mobileMenuBtn.classList.remove('open');
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+                    if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+                    if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+                }
+                updateTimer();
+                setInterval(updateTimer, 1000);
             }
         });
-    }
-
-
     </script>
 </body>
 </html>
