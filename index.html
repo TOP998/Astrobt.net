@@ -54,23 +54,28 @@
 
   gtag('config', 'G-DHG8F1P37M');
 </script>
-    <!-- Telegram Web App SDK -->
+<!-- Telegram Web App SDK -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
     // Инициализация WebApp
     const tg = window.Telegram.WebApp;
-    tg.ready();
-    tg.expand(); // Разворачиваем на весь экран
-
-    // Логика изменения интерфейса (когда страница загрузится)
-    document.addEventListener('DOMContentLoaded', function() {
-        // Проверяем, что открыто внутри Telegram
-        if (tg.initDataUnsafe !== undefined) {
-            // 1. Скрываем кнопки "Открыть бота", так как мы уже в нём
-            const tgButtons = document.querySelectorAll('a[href="https://t.me/astrotgbot_bot"]');
-            tgButtons.forEach(btn => btn.style.display = 'none');
-
-            // 2. Приветствие по имени (если доступно)
+    
+    // Проверяем, что открыто ИМЕННО в Telegram Mini App (а не в браузере)
+    const isTelegramApp = tg.initData && tg.initData.length > 0;
+    
+    if (isTelegramApp) {
+        // ТОЛЬКО внутри Telegram:
+        tg.ready();
+        tg.expand();
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Скрываем кнопки "Открыть бота" (только в Mini App)
+            const tgButtons = document.querySelectorAll('a[href*="t.me/astrotgbot_bot"]');
+            tgButtons.forEach(btn => {
+                btn.style.display = 'none';
+            });
+            
+            // Персонализация
             const user = tg.initDataUnsafe?.user;
             if (user?.first_name) {
                 const heroTitle = document.querySelector('.hero-title');
@@ -78,8 +83,9 @@
                     heroTitle.innerHTML = `Привет, ${user.first_name}! <span class="text-gold">Узнай судьбу</span>`;
                 }
             }
-        }
-    });
+        });
+    }
+    // Если НЕ Telegram — ничего не делаем, лендинг работает как обычно
 </script>
     
     <!-- Стили для модальных окон (Политика и Оферта) -->
