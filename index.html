@@ -671,5 +671,133 @@
             }
         });
     </script>
+ <!-- 🔮 ASTROBOT: Живые кнопки для лендинга (не меняет дизайн) -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // === КОНФИГУРАЦИЯ ===
+    const API_BASE = 'https://astrobot-production-cc8d.up.railway.app';
+    const AUTH_TOKEN = localStorage.getItem('astro_web_token') || 'web_' + Date.now();
+    localStorage.setItem('astro_web_token', AUTH_TOKEN);
+    
+    // === УНИВЕРСАЛЬНЫЙ ЗАПРОС К API ===
+    async function apiCall(endpoint, data = {}) {
+        try {
+            const res = await fetch(`${API_BASE}${endpoint}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': AUTH_TOKEN
+                },
+                body: JSON.stringify({ user_id: 0, ...data }) // user_id=0 для веб-демо
+            });
+            return await res.json();
+        } catch (e) {
+            console.error('API Error:', e);
+            return { error: 'Сеть' };
+        }
+    }
+    
+    // === КРАСИВЫЙ ПОПАП ДЛЯ РЕЗУЛЬТАТОВ (динамический, не меняет вёрстку) ===
+    function showResultPopup(title, content) {
+        // Удаляем старый попап если есть
+        const old = document.getElementById('astro-popup');
+        if (old) old.remove();
+        
+        // Создаём новый
+        const popup = document.createElement('div');
+        popup.id = 'astro-popup';
+        popup.style.cssText = `
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5,5,8,0.95); z-index: 9999;
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px; box-sizing: border-box;
+        `;
+        
+        popup.innerHTML = `
+            <div style="
+                background: linear-gradient(135deg, #0B0C15, #1A1A2E);
+                border: 1px solid rgba(212,175,55,0.3);
+                border-radius: 16px; padding: 24px; max-width: 500px;
+                width: 100%; max-height: 85vh; overflow-y: auto;
+                box-shadow: 0 0 20px rgba(0,210,255,0.2);
+                font-family: 'Inter', sans-serif; color: #fff;
+            ">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(212,175,55,0.2)">
+                    <h3 style="font-family:'Cinzel',serif;font-size:18px;font-weight:900;color:#F4C430;margin:0">${title}</h3>
+                    <button id="astro-close" style="background:none;border:none;font-size:24px;color:#aaa;cursor:pointer">&times;</button>
+                </div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.8;color:#ddd">
+                    ${content.replace(/\n/g, '<br>')}
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(popup);
+        
+        // Закрытие
+        document.getElementById('astro-close').onclick = () => popup.remove();
+        popup.onclick = (e) => { if (e.target === popup) popup.remove(); };
+    }
+    
+    // === ОБРАБОТЧИКИ ДЛЯ КАРТОЧЕК ЛЕНДИНГА ===
+    
+    // Натальная карта (карточка в секции #features)
+    document.querySelector('.feature-card:nth-child(2)')?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const btn = e.currentTarget;
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '⏳ Загрузка...';
+        btn.style.opacity = '0.7';
+        
+        const result = await apiCall('/api/natal');
+        if (result.text) {
+            showResultPopup('🔮 Натальная карта', result.text);
+        } else {
+            alert('⚠️ ' + (result.error || 'Нет данных'));
+        }
+        
+        btn.innerHTML = originalHTML;
+        btn.style.opacity = '1';
+    });
+    
+    // Гороскоп (первая карточка)
+    document.querySelector('.feature-card:nth-child(1)')?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const result = await apiCall('/api/horoscope', { period: '1day' });
+        if (result.text) {
+            showResultPopup('🌙 Гороскоп на сегодня', result.text);
+        } else {
+            alert('⚠️ ' + (result.error || 'Нет данных'));
+        }
+    });
+    
+    // Совет дня
+    document.querySelector('.feature-card:nth-child(4)')?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const result = await apiCall('/api/daily_tip');
+        if (result.text) {
+            showResultPopup('✨ Совет дня', result.text);
+        } else {
+            alert('⚠️ ' + (result.error || 'Нет совета'));
+        }
+    });
+    
+    // Картинки (если есть поле ввода на лендинге — можно добавить)
+    
+    // === КНОПКА "ОТКРЫТЬ В TELEGRAM" В ШАПКЕ (опционально) ===
+    // Если хочешь добавить кнопку "📱 Открыть в Telegram" в шапку лендинга:
+    /*
+    const header = document.querySelector('.header-content');
+    if (header) {
+        const tgBtn = document.createElement('a');
+        tgBtn.href = 'https://t.me/astrotgbot_bot/app';
+        tgBtn.target = '_blank';
+        tgBtn.textContent = '📱 Открыть в Telegram';
+        tgBtn.style.cssText = 'margin-left:15px;padding:8px 16px;background:#F4C430;color:#000;border-radius:20px;text-decoration:none;font-weight:600;font-size:13px';
+        header.appendChild(tgBtn);
+    }
+    */
+});
+</script>
 </body>
 </html> ,
