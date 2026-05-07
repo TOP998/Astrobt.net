@@ -65,176 +65,99 @@
     </style>
 </head>
 <body>
- <!-- 🔮 ПЛАВАЮЩАЯ КНОПКА ПЕРЕКЛЮЧЕНИЯ ПЛАТФОРМ -->
-<div class="platform-float" id="platformFloat">
-    <div class="platform-float-content">
-        <span class="platform-label">🌐 Платформа:</span>
-        <div class="platform-buttons">
-            <a href="https://t.me/astrotgbot_bot/app" target="_blank" 
-               class="platform-btn" id="btnTelegram" onclick="setPlatform('telegram')">
-                📱 Telegram
-            </a>
-            <a href="/index.html" target="_blank" 
-               class="platform-btn" id="btnWeb" onclick="setPlatform('web')">
-                🌐 Веб-версия
-            </a>
-        </div>
-        <button class="platform-close" onclick="closePlatformFloat()">&times;</button>
-    </div>
+ <!-- 🔮 СТЕКЛЯННЫЙ ПЕРЕКЛЮЧАТЕЛЬ ПЛАТФОРМ -->
+<div class="platform-switcher" id="platformSwitcher">
+    <a href="https://t.me/astrotgbot_bot/app" class="switch-btn telegram-btn">Telegram</a>
+    <a href="/index.html" class="switch-btn web-btn">Веб-версия</a>
 </div>
 
 <style>
-    .platform-float {
+    .platform-switcher {
         position: fixed;
-        top: 80px; /* Под хедером */
+        top: 20px;
         left: 50%;
         transform: translateX(-50%);
-        z-index: 1000;
-        background: rgba(11, 12, 21, 0.95);
-        border: 1px solid rgba(212, 175, 55, 0.4);
-        border-radius: 25px;
-        padding: 8px 16px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.2);
-        backdrop-filter: blur(10px);
-        animation: slideDown 0.3s ease;
-    }
-    
-    .platform-float-content {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-    
-    .platform-label {
-        font-size: 12px;
-        color: #aaa;
-        font-family: 'Inter', sans-serif;
-    }
-    
-    .platform-buttons {
+        z-index: 10000;
+        /* Стеклянный фон */
+        background: rgba(232, 213, 183, 0.15);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(232, 213, 183, 0.5);
+        border-radius: 50px;
+        padding: 6px;
         display: flex;
         gap: 6px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+        animation: fadeInDown 0.4s ease;
     }
-    
-    .platform-btn {
-        padding: 6px 14px;
-        border-radius: 15px;
-        font-size: 12px;
-        font-weight: 600;
+
+    .switch-btn {
+        padding: 10px 28px;
+        border-radius: 40px;
         text-decoration: none;
-        transition: all 0.2s;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        background: transparent;
+        color: #8B7355;
         border: 1px solid transparent;
-        cursor: pointer;
+        position: relative;
+        overflow: hidden;
     }
-    
-    .platform-btn.telegram {
-        background: linear-gradient(135deg, #2AABEE, #1E88E5);
-        color: #fff;
-        box-shadow: 0 2px 10px rgba(42, 171, 238, 0.3);
-    }
-    
-    .platform-btn.web {
-        background: rgba(244, 196, 48, 0.15);
-        color: #F4C430;
-        border-color: rgba(244, 196, 48, 0.4);
-    }
-    
-    .platform-btn:hover {
+
+    /* Эффект при наведении и нажатии */
+    .switch-btn:hover {
+        background: rgba(232, 213, 183, 0.3);
         transform: translateY(-2px);
-        opacity: 0.9;
     }
-    
-    .platform-btn.active {
-        box-shadow: 0 0 10px rgba(244, 196, 48, 0.6);
+
+    .switch-btn:active {
+        transform: scale(0.96);
+        box-shadow: 0 0 15px rgba(244, 196, 48, 0.8);
     }
-    
-    .platform-close {
-        background: none;
-        border: none;
-        color: #666;
-        font-size: 18px;
-        cursor: pointer;
-        padding: 0 4px;
-        line-height: 1;
-        transition: color 0.2s;
+
+    /* Активная кнопка (светлая как на макете) */
+    .switch-btn.active {
+        background: linear-gradient(135deg, #F4E8C1, #E8D5B7);
+        color: #2C1810;
+        border-color: #ffffff;
+        box-shadow: 
+            0 0 10px rgba(244, 196, 48, 0.6), 
+            0 0 20px rgba(255, 255, 255, 0.4),
+            inset 0 1px 0 rgba(255,255,255,0.8);
+        text-shadow: 0 1px 0 rgba(255,255,255,0.5);
     }
-    
-    .platform-close:hover {
-        color: #fff;
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translate(-50%, -20px); }
+        to { opacity: 1; transform: translate(-50%, 0); }
     }
-    
-    @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateX(-50%) translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-    }
-    
-    /* Скрываем на мобильных */
-    @media (max-width: 768px) {
-        .platform-float {
-            top: 70px;
-            padding: 6px 12px;
-        }
-        .platform-label {
-            display: none;
-        }
-        .platform-btn {
-            padding: 5px 10px;
-            font-size: 11px;
-        }
+
+    @media (max-width: 600px) {
+        .platform-switcher { top: 15px; padding: 4px; }
+        .switch-btn { padding: 8px 16px; font-size: 12px; }
     }
 </style>
 
 <script>
-// Определение текущей платформы
-function detectPlatform() {
-    const tg = window.Telegram?.WebApp;
-    if (tg && tg.initData) return 'telegram';
-    const ua = navigator.userAgent.toLowerCase();
-    if (ua.includes('telegram') || ua.includes('tgweb')) return 'telegram';
-    return 'web';
-}
-
-// Подсветка активной кнопки
-function highlightActivePlatform() {
-    const platform = detectPlatform();
-    const btnTg = document.getElementById('btnTelegram');
-    const btnWeb = document.getElementById('btnWeb');
-    
-    if (platform === 'telegram') {
-        btnTg.classList.add('active');
-        btnWeb.classList.remove('active');
-    } else {
-        btnWeb.classList.add('active');
-        btnTg.classList.remove('active');
-    }
-}
-
-// Закрытие плашки
-function closePlatformFloat() {
-    const float = document.getElementById('platformFloat');
-    if (float) {
-        float.style.display = 'none';
-        localStorage.setItem('platformFloatClosed', 'true');
-    }
-}
-
-// Инициализация
-document.addEventListener('DOMContentLoaded', () => {
-    // Проверяем, закрывал ли пользователь плашку
-    const isClosed = localStorage.getItem('platformFloatClosed');
-    if (isClosed === 'true') {
-        document.getElementById('platformFloat').style.display = 'none';
-    } else {
-        highlightActivePlatform();
-    }
-});
+    // Подсветка активной платформы при загрузке
+    document.addEventListener('DOMContentLoaded', () => {
+        const isWeb = !window.Telegram?.WebApp?.initData && !window.location.href.includes('t.me');
+        const tgBtn = document.querySelector('.telegram-btn');
+        const webBtn = document.querySelector('.web-btn');
+        
+        if (isWeb) {
+            webBtn.classList.add('active');
+            tgBtn.classList.remove('active');
+        } else {
+            tgBtn.classList.add('active');
+            webBtn.classList.remove('active');
+        }
+    });
 </script>
+ 
     
     <div class="stars-bg" id="starsBg"></div>
     
