@@ -110,7 +110,29 @@
         .modal-body h3 { color: #d4af37; font-size: 16px; margin-top: 15px; }
         .modal-body a { color: #ffd700; text-decoration: none; }
         .modal-body a:hover { text-decoration: underline; }
-    </style>
+  /* ========================================== */
+/* 1. УБИРАЕМ ЖЕЛТЫЕ ПОЛОСКИ (МЕНЮ)           */
+/* ========================================== */
+.mobile-menu-btn, 
+#mobileMenuBtn {
+    display: none !important; /* Скрываем иконку меню */
+}
+
+.mobile-menu {
+    display: none !important; /* Скрываем само выпадающее меню */
+}
+
+/* ========================================== */
+/* 2. СДВИГАЕМ КНОПКУ ВПРАВО                  */
+/* ========================================== */
+@media (max-width: 900px) {
+    .web-btn-below {
+        /* Толкаем кнопку максимально вправо */
+        margin-left: auto !important; 
+        margin-right: 15px !important; /* Небольшой отступ от самого края */
+    }
+}
+</style>
 </head>
 <body>
  
