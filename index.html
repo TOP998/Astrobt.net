@@ -253,7 +253,7 @@
   ]
 }
 </script>
-    </script>
+</script>
 
     <!-- 4. FAQPage — ЕДИНСТВЕННЫЙ блок (объединён) -->
     <script type="application/ld+json">
@@ -457,23 +457,35 @@
             .switch-btn { padding: 8px 16px; font-size: 12px; }
             .mobile-menu-btn, #mobileMenuBtn { display: none !important; }
             .mobile-menu { display: none !important; }
-            .header-content { position: relative !important; }
+            .header-content { 
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                position: relative !important;
+            }
             .web-btn-below {
-                position: absolute !important;
-                left: 250px !important;
-                top: 50% !important;
-                transform: translateY(-50%) !important;
+                /* Убираем absolute, пусть flex сам расставит */
+                position: static !important;
                 margin: 0 !important;
-                padding: 8px 30px !important;
-                font-size: 8px !important;
+    
+                 /* Размер кнопки */
+                padding: 12px 24px !important;
+                font-size: 12px !important;
                 font-weight: 800 !important;
+                border-radius: 50px !important;
+                white-space: nowrap !important;
+    
+                /* Бежевый фон + белый текст */
+                background: linear-gradient(135deg, #F4E8C1 0%, #E8D5B7 100%) !important;
                 color: #2C1810 !important;
                 text-shadow: none !important;
-                background: linear-gradient(135deg, #F4E8C1 0%, #E8D5B7 100%) !important;
+    
+                 /* Белая обводка + яркое свечение */
                 border: 2px solid #ffffff !important;
-                box-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255,255,255,0.8) !important;
-                border-radius: 50px !important;
-                backdrop-filter: none !important;
+                box-shadow: 
+                 0 0 10px #ffffff, 
+                 0 0 25px rgba(255, 255, 255, 0.7) 
+                !important;
             }
             .logo { position: relative !important; }
         }
