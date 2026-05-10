@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+Sitemap: https://astrobt.net/sitemap.xml
+
+# Кэширование для ботов
+Crawl-delay: 1
