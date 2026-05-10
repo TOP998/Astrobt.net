@@ -1,0 +1,56 @@
+{
+  "name": "Astrobot — AI астрология и натальная карта онлайн",
+  "short_name": "Astrobot",
+  "description": "Персональный AI астрологический прогноз, натальная карта и совместимость знаков в Telegram",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0C15",
+  "theme_color": "#0B0C15",
+  "lang": "ru-RU",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["lifestyle", "entertainment"],
+  "icons": [
+    {
+      "src": "images/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/preview.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "label": "Astrobot — персональный астрологический прогноз"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Открыть в Telegram",
+      "short_name": "Telegram",
+      "description": "Открыть Astrobot в Telegram",
+      "url": "https://t.me/astrotgbot_bot/app",
+      "icons": [{ "src": "images/favicon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
