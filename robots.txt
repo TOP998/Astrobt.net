@@ -1,10 +1,24 @@
 User-agent: *
 Allow: /
+
+# Закрываем веб-приложение от индексации
+Disallow: /web/
+Disallow: /app/
+
+# Разрешаем важные ресурсы для рендеринга (Google должен видеть CSS/JS)
 Allow: /css/
 Allow: /js/
 Allow: /images/
 
+# Sitemap
 Sitemap: https://astrobt.net/sitemap.xml
 
-# Кэширование для ботов
-Crawl-delay: 1
+# Crawl delay для агрессивных ботов
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
