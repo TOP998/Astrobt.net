@@ -167,87 +167,92 @@
     }
     </script>
 
-    <!-- 3. SoftwareApplication -->
-    <script type="application/ld+json">
+    <!-- 3. SoftwareApplication (ИСПРАВЛЕН: добавлено itemReviewed) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Astrobot",
+  "applicationCategory": "LifestyleApplication",
+  "applicationSubCategory": "Astrology",
+  "operatingSystem": "Web, iOS, Android, Telegram",
+  "url": "https://astrobt.net/",
+  "downloadUrl": "https://t.me/astrotgbot_bot/app",
+  "installUrl": "https://t.me/astrotgbot_bot/app",
+  "description": "Персональный AI астрологический прогноз, натальная карта онлайн и совместимость знаков зодиака в Telegram.",
+  "screenshot": {
+    "@type": "ImageObject",
+    "url": "https://astrobt.net/images/preview.jpg",
+    "width": 1200,
+    "height": 630
+  },
+  "softwareVersion": "1.0",
+  "datePublished": "2025-01-01",
+  "inLanguage": ["ru-RU"],
+  "applicationSuite": "Telegram Mini App",
+  "featureList": [
+    "Натальная карта онлайн",
+    "Совместимость знаков зодиака",
+    "Лунный календарь",
+    "Нумерология",
+    "Прогноз на день, месяц и год",
+    "Совет дня с аудио",
+    "Генерация изображений",
+    "ИИ ассистент"
+  ],
+  "offers": [
     {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Astrobot",
-      "applicationCategory": "LifestyleApplication",
-      "applicationSubCategory": "Astrology",
-      "operatingSystem": "Web, iOS, Android, Telegram",
-      "url": "https://astrobt.net/",
-      "downloadUrl": "https://t.me/astrotgbot_bot/app",
-      "installUrl": "https://t.me/astrotgbot_bot/app",
-      "description": "Персональный AI астрологический прогноз, натальная карта онлайн и совместимость знаков зодиака в Telegram.",
-      "screenshot": {
-        "@type": "ImageObject",
-        "url": "https://astrobt.net/images/preview.jpg",
-        "width": 1200,
-        "height": 630
-      },
-      "softwareVersion": "1.0",
-      "datePublished": "2025-01-01",
-      "inLanguage": ["ru-RU"],
-      "applicationSuite": "Telegram Mini App",
-      "featureList": [
-        "Натальная карта онлайн",
-        "Совместимость знаков зодиака",
-        "Лунный календарь",
-        "Нумерология",
-        "Прогноз на день, месяц и год",
-        "Совет дня с аудио",
-        "Генерация изображений",
-        "ИИ ассистент"
-      ],
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "Бесплатный доступ",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock",
-          "description": "Месячный гороскоп, базовые прогнозы"
-        },
-        {
-          "@type": "Offer",
-          "name": "VIP подписка",
-          "price": "290",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "2027-12-31",
-          "description": "Натальная карта, совместимость, лунный календарь, советы дня, прогнозы на 3/6/12 месяцев"
-        }
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "842",
-        "reviewCount": "842",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Анна" },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "reviewBody": "Точность поражает! Узнала о повышении за 2 недели до приказа. Натальная карта открыла мне глаза на мои сильные стороны"
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Михаил" },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "reviewBody": "Пользуюсь уже 3 месяца. Советы дня реально помогают принимать решения. Совместимость с женой — 95%, так и есть!"
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Елена" },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "reviewBody": "Лучшее астрологическое приложение в Telegram! Удобно, красиво, точно. VIP стоит своих денег на 100%"
-        }
-      ]
+      "@type": "Offer",
+      "name": "Бесплатный доступ",
+      "price": "0",
+      "priceCurrency": "RUB",
+      "availability": "https://schema.org/InStock",
+      "description": "Месячный гороскоп, базовые прогнозы"
+    },
+    {
+      "@type": "Offer",
+      "name": "VIP подписка",
+      "price": "290",
+      "priceCurrency": "RUB",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2027-12-31",
+      "description": "Натальная карта, совместимость, лунный календарь, советы дня, прогнозы на 3/6/12 месяцев"
     }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "842",
+    "reviewCount": "842",
+    "bestRating": "5",
+    "worstRating": "1",
+    "itemReviewed": { "@type": "SoftwareApplication", "name": "Astrobot" }
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "itemReviewed": { "@type": "SoftwareApplication", "name": "Astrobot" },
+      "author": { "@type": "Person", "name": "Анна" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Точность поражает! Узнала о повышении за 2 недели до приказа. Натальная карта открыла мне глаза на мои сильные стороны"
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": { "@type": "SoftwareApplication", "name": "Astrobot" },
+      "author": { "@type": "Person", "name": "Михаил" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Пользуюсь уже 3 месяца. Советы дня реально помогают принимать решения. Совместимость с женой — 95%, так и есть!"
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": { "@type": "SoftwareApplication", "name": "Astrobot" },
+      "author": { "@type": "Person", "name": "Елена" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Лучшее астрологическое приложение в Telegram! Удобно, красиво, точно. VIP стоит своих денег на 100%"
+    }
+  ]
+}
+</script>
     </script>
 
     <!-- 4. FAQPage — ЕДИНСТВЕННЫЙ блок (объединён) -->
