@@ -451,44 +451,55 @@
         .modal-body a { color: #ffd700; text-decoration: none; }
         .modal-body a:hover { text-decoration: underline; }
 
-        /* === MOBILE === */
-        @media (max-width: 900px) {
-            .platform-switcher { top: 15px; padding: 4px; }
-            .switch-btn { padding: 8px 16px; font-size: 12px; }
-            .mobile-menu-btn, #mobileMenuBtn { display: none !important; }
-            .mobile-menu { display: none !important; }
-            .header-content { 
-                display: flex !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-                position: relative !important;
-            }
-            .web-btn-below {
-                /* Убираем absolute, пусть flex сам расставит */
-                position: static !important;
-                margin: 0 !important;
-    
-                 /* Размер кнопки */
-                padding: 12px 24px !important;
-                font-size: 12px !important;
-                font-weight: 800 !important;
-                border-radius: 50px !important;
-                white-space: nowrap !important;
-    
-                /* Бежевый фон + белый текст */
-                background: linear-gradient(135deg, #F4E8C1 0%, #E8D5B7 100%) !important;
-                color: #2C1810 !important;
-                text-shadow: none !important;
-    
-                 /* Белая обводка + яркое свечение */
-                border: 2px solid #ffffff !important;
-                box-shadow: 
-                 0 0 10px #ffffff, 
-                 0 0 25px rgba(255, 255, 255, 0.7) 
-                !important;
-            }
-            .logo { position: relative !important; }
-        }
+        /* ========================================== */
+/* 📱 ИСПРАВЛЕНИЕ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ       */
+/* ========================================== */
+@media (max-width: 900px) {
+    /* 1. Расставляем элементы: Логотип слева, Кнопка справа */
+    .header-content {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        position: relative !important;
+        padding-right: 15px !important;
+    }
+
+    /* 2. Скрываем лишнее меню (бургер), чтобы не мешало */
+    .mobile-menu-btn, #mobileMenuBtn, .mobile-menu {
+        display: none !important;
+    }
+
+    /* 3. Стилизуем САМУ КНОПКУ (ищем её по ссылке) */
+    a[href="https://web.astrobt.net"] {
+        /* Делаем видимой и позиционируем */
+        display: inline-block !important;
+        position: static !important; /* Чтобы flex мог ей управлять */
+        margin: 0 !important;
+        
+        /* Размеры и форма */
+        padding: 10px 20px !important; /* Размер кнопки */
+        font-size: 12px !important;
+        font-weight: 800 !important;
+        border-radius: 50px !important; /* Овальная */
+        white-space: nowrap !important; /* Текст в одну строку */
+        
+        /* Цвета (Бежевый фон, Чёрный текст) */
+        background: linear-gradient(135deg, #F4E8C1 0%, #E8D5B7 100%) !important;
+        color: #000000 !important; /* ✅ ЧЁРНЫЙ ТЕКСТ */
+        text-shadow: none !important;
+        
+        /* Свечение и обводка */
+        border: 2px solid #ffffff !important;
+        box-shadow: 
+            0 0 10px #ffffff, 
+            0 0 25px rgba(255, 255, 255, 0.8) 
+        !important;
+        
+        /* Сброс старых стилей десктопа */
+        backdrop-filter: none !important;
+    }
+}
+            
 
         /* === CTA TIMER FIX (предотвращаем CLS) === */
         .cta-timer {
